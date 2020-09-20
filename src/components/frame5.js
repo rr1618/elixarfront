@@ -7,14 +7,14 @@ import React from "react";
 const Frame5=()=>{
     return(<Grid container justify={'center'}  >
         <Grid item xs={12} >
-            <p style={{color:'#C160E5',textAlign:'center'}}>PEOPLE</p>
+            <p style={{color:'#C160E5',textAlign:'center',fontWeight:'bolder',fontSize:20}}>PEOPLE</p>
         </Grid>
         <Grid item lg={12}>
             <p id={'coursesare'}>Corses are designed by renowned educators <br/> to help students bring practicality into the heart <br/> of learning.</p>
         </Grid>
         <Grid item container lg={12}  justify={'center'} >
-            <Grid item xs={8} >
-                <Paper elevation={5} id={'anuradha'} >
+            <Grid item xs={12} lg={8} >
+                <Paper elevation={5} id={'anuradha'}  >
 
                     <Grid container>
                         <Grid item lg={8}>
