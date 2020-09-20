@@ -38,9 +38,13 @@ p{
   background-size:cover;
   background-repeat:no-repeat;
   background-position:center center;
+}.container1{
+  height:100vh;
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-position:center center;
 }
 .overlay{
-  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -165,10 +169,15 @@ li:nth-child(6){
   font-weight: bold;
   padding: 5px;
 }
+
+
 .kalamfooter p{
   font-size: 20px;
-  padding-right: 10px;
-  padding-left: 10px;
+
+}
+#kalamlabdark{
+  margin-left:170px;
+  font-weight:bold
 }
 #weteach{
   color:#C160E5 ;
@@ -189,6 +198,7 @@ li:nth-child(6){
 #anuradha  p:nth-child(1){
   font-weight: bold;
   font-size: 20px;
+  text-align: left;
 }
 #anuradha p:nth-child(2){
   color: #8373A5;
@@ -276,6 +286,10 @@ li:nth-child(6){
   background-color: #272330;
   height: 100vh;
 }
+.container p{
+  text-align: center;
+}
+
 
 
 
@@ -331,12 +345,40 @@ and (orientation: portrait) {
   .dfloat{
 
     position: fixed;
-    top: 130px;
-    left: 30px;
+    top: 100px;
+    left: 35px;
+  } .float{
+
+    position: fixed;
+    top: 20px;
+    left: 35px;
   }
   #kalamlab{
     text-align: left;
     padding: 10px;
   }
+  #coursesare{
+    text-align: left;
+    font-size: 25px;
+    font-weight: bold;
+    padding-left: 25px;
+  }
+  #kalamlabdark{
+    margin-left:0px;
+    font-weight:bold
+  }
+  .kalamfooter p{
+    padding: 0px;
 
+
+  }
+  .container p{
+    text-align: left;
+  }
+  .container{
+    height:min-content;
+  }
+  .container1{
+    padding-bottom: 700px;
+  }
   }
