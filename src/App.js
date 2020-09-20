@@ -1,10 +1,10 @@
-import React,{createContext,useState} from 'react';
-import logo from './logo.svg';
+import React,{createContext,useState,Suspense} from 'react';
 import './App.css';
+import Grid from '@material-ui/core/Grid';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom'
-
-import Frame1 from "./components/home";
-import PreCheckout from "./components/precheckout";
+const  Frame1 = React.lazy(()=>import("./components/home"));
+const  PreCheckout = React.lazy(()=>import("./components/precheckout"));
 export const FormSelectContext = createContext(null)
 
 function App() {
@@ -13,9 +13,19 @@ function App() {
       <React.Fragment>
           <Router>
               <Switch>
-                  <Route exact path={'/'} component={Frame1}/>
+
                   <FormSelectContext.Provider value={{form,setForm}}>
-                        <Route exact path={'/checkout'} component={PreCheckout}/>
+                      <Suspense fallback={<Grid container justify={'center'} alignItems={'center'} style={{
+                          height:'100vh'
+                      }}>
+                          <Grid item>
+                              <CircularProgress />
+                          </Grid>
+
+                      </Grid>}>
+                            <Route exact path={'/'} component={Frame1}/>
+                            <Route exact path={'/checkout'} component={PreCheckout}/>
+                      </Suspense>
                   </FormSelectContext.Provider>
 
 
