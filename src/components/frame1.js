@@ -214,7 +214,7 @@ const Frame1=()=>{
                         <p id={'withau'}>With our Augmented Reality courses designed for Indian school students</p>
                     </Grid>
 
-                    <Grid item container justify={'space-evenly'} style={{marginTop:20}} lg={7}>
+                    <Grid item container justify={'space-evenly'} style={{marginTop:100}} lg={7}>
                         <Grid item className={'warrior'}  xs={11} lg={5}>
                             {show?<div className={'float'}><ExplorerShort/></div>:<div id={'explorer'}><Explorer /></div>}
 
