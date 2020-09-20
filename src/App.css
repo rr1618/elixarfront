@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@700&display=swap');
+@import url('https://fonts.cdnfonts.com/css/flama');
+
+p{
+  font-family: sans-serif;
+}
 .App {
   text-align: center;
 }
@@ -27,7 +33,173 @@
 .App-link {
   color: #61dafb;
 }
+.container{
+  height:100vh;
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-position:center center;
+}
+.overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .5);
 
+}
+#heading{
+  text-align: left;
+  font-family:   'Cabin', sans-serif;
+  font-size: .8em;
+  letter-spacing: 0px;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  opacity: 1;
+}
+.navitems *{
+  color:#8A808E
+}
+.navitems p{
+  margin-right: 20px;
+}
+#learnscience{
+  text-align: center;
+  /*font-family: 'Flama',sans-serif;*/
+  font-family: 'Flama',sans-serif;
+  font-size: 3em;
+
+  letter-spacing: 0px;
+  color: #FFFFFF;
+  opacity: 1;
+}
+/*p{*/
+/*  font-family: 'Flama',sans-serif;*/
+/*}*/
+.warrior{
+  text-align: center;
+
+
+}
+.sticky{
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+.paper img{
+  width: 160px;
+  position: relative;
+  top:-100px;
+
+}
+.float{
+
+  position: fixed;
+  top: 30px;
+}
+.dfloat{
+
+  position: fixed;
+  top: 30px;
+}
+ul {
+  list-style-type: none;
+  margin-left: -30px;
+  margin-top: -70px;
+
+}
+li{
+
+  margin-bottom: 10px;
+}
+li:nth-child(1){
+  color: #C160E5;
+}
+li:nth-child(2){
+  color: white;
+  font-size: 1.5em;
+
+}
+li:nth-child(3){
+  font-size: .9em;
+  color: white;
+}
+li:nth-child(4){
+  font-size: .7em;
+  color: gray;
+}
+li:nth-child(5){
+  font-size: .9em;
+  color: #19C8FF;
+}
+li:nth-child(6){
+  font-size: 1em;
+  color: white;
+}
+.short img{
+  object-fit: cover;
+  width:230px;
+  height:230px;
+}
+#kalam{
+  text-align: center;
+  padding-left: 20px;
+  padding-right: 20px;
+
+}
+#withau{
+  color: white;
+  font-family: -apple-system;
+  padding: 10px;
+  text-align: center;
+}
+#ina{
+  color:#C160E5;
+  font-size:2em;
+  text-align:center;
+}
+.kalamfooter span{
+  color: #8373A5;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 5px;
+}
+.kalamfooter p{
+  font-size: 20px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+#weteach{
+  color:#C160E5 ;
+  font-size: 30px;
+  font-weight: bold;
+
+
+}
+#coursesare{
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+#anuradha{
+  text-align: center;
+  padding: 30px;
+}
+#anuradha  p:nth-child(1){
+  font-weight: bold;
+  font-size: 20px;
+}
+#anuradha p:nth-child(2){
+  color: #8373A5;
+  font-size: 12px;
+  text-align: left;
+}
+#anuradha span{
+  font-size: 15px;
+  color: gray;
+  text-align: left;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -36,3 +208,135 @@
     transform: rotate(360deg);
   }
 }
+#kalamlab{
+  text-align: center;
+}
+.card{
+  margin-top: 50px;
+}
+.card p:nth-child(2){
+  font-size: 13px;
+}.card p:nth-child(3){
+  font-size: 12px;
+  color: gray;
+}.card p:nth-child(1){
+  font-size: 12px;
+    color: #19C8FF
+}
+.card span{
+  font-size: 12px;
+  color: gray;
+}
+.input{
+  width:100%;
+
+  background-color: #F2F2F2;
+
+
+}
+.helper{
+  color: red;
+  font-size: 13px;
+  padding: 10px;
+
+}
+.howitworks span{
+  padding:10px;
+  margin-left:30px;
+  background-color:#8373A5;
+  border-radius:50%
+}
+.button{
+  background-color: #F2F2F2;
+  margin-right: 20px;
+  border-radius: 20px;
+  border-style: none;
+  padding: 15px;
+  outline: none;
+  cursor: pointer;
+
+
+}
+.button:focus{
+  background-color: #19C8FF;
+  /*color: #19C8FF*/
+}
+.timers p{
+  font-size: 20px;
+  background-color: gray;
+  padding:10px ;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-radius: 20px;
+}
+.timers p:focus{
+  background-color: red;
+}
+.precheckout{
+  background-color: #272330;
+  height: 100vh;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen
+and (orientation: portrait) {
+
+  .precheckout{
+    background-color: #272330;
+    height: min-content;
+  }
+  .warrior {
+
+    padding: 10px;
+  }
+  .paper{
+    margin-top:100px;
+  }
+  #learnscience{
+    text-align: left;
+    padding: 10px;
+    margin: 0px;
+    font-size: 2.5em;
+  }
+  #withau{
+    color: white;
+    font-family: -apple-system;
+    padding: 10px;
+  }
+  #kalam{
+    text-align: left;
+  }
+  #ina{
+    margin-top: 230px;
+    text-align: left;
+    padding: 10px;
+  }
+  .dfloat{
+
+    position: fixed;
+    top: 130px;
+    left: 30px;
+  }
+  #kalamlab{
+    text-align: left;
+    padding: 10px;
+  }
+
+  }

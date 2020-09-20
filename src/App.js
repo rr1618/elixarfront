@@ -1,25 +1,28 @@
-import React from 'react';
+import React,{createContext,useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter as Router,Route,Switch} from 'react-router-dom'
+
+import Frame1 from "./components/home";
+import PreCheckout from "./components/precheckout";
+export const FormSelectContext = createContext(null)
 
 function App() {
+    const [form,setForm] = useState(0)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <React.Fragment>
+          <Router>
+              <Switch>
+                  <Route exact path={'/'} component={Frame1}/>
+                  <FormSelectContext.Provider value={{form,setForm}}>
+                        <Route exact path={'/checkout'} component={PreCheckout}/>
+                  </FormSelectContext.Provider>
+
+
+              </Switch>
+          </Router>
+
+      </React.Fragment>
   );
 }
 
