@@ -1,32 +1,24 @@
 import React, {useContext, useEffect, useState} from "react";
 import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
-import explorer from '../assets/explorer.png'
-import Divider from '@material-ui/core/Divider';
 import {useMediaQuery} from 'react-responsive'
-import {
-    BrowserRouter as Router, Route, Switch, useParams,
-    useRouteMatch
-} from 'react-router-dom'
 import {FormSelectContext} from "../App";
 import Aos from "aos";
 import conquerer from '../assets/conquerer.png'
-import {Form1, Form2, Form3} from "./paymentform";
+import {Form1, Form2, Form3,Form4} from "./paymentform";
 
 const Detail = () => {
     const isPortrait = useMediaQuery({query: '(orientation: portrait)'})
     return (<React.Fragment>
         <Grid container item lg={6} justify={'center'} alignItems={'center'}>
             <Grid item xs={2} lg={1} style={{marginRight: 10}}>
-                <img src={conquerer} height={50} alt=""/>
+                <img src={conquerer} height={60} alt=""/>
             </Grid>
             <Grid item container direction={'column'} xs={8} lg={4}>
                 <Grid item style={{color: 'white'}}>
-                    <p>Engineering Conquerer <br/><span style={{color: '#8A808E', fontSize: '12px'}}>Course for class 11th to 12th</span>
+                    <p>Engineering Conquerer <br/><span style={{color: '#8A808E', fontSize: '13px'}}>Course for class 11th to 12th</span>
                     </p>
                     {isPortrait ? <div></div> :
-                        <p style={{fontSize: 12, fontFamily: "inherit"}}>An Augmented Reality based
+                        <p style={{fontSize: 13, fontFamily: "inherit"}}>An Augmented Reality based
                             Practical <br/> Imagination Foundation Course</p>}
                     <span style={{color: '#8A808E', fontSize: '12px'}}>2 Weeks Course</span>
 
@@ -95,6 +87,9 @@ const FormOutPut = () => {
     if (form === 2) {
         return (<Form3/>)
     }
+    if (form === 3) {
+        return (<Form4/>)
+    }
 }
 const PreCheckout = () => {
 
@@ -109,9 +104,7 @@ const PreCheckout = () => {
             }}>KALAM <br/>LABS</p></Grid>
             <Detail/>
             <Grid item lg={5} style={{paddingTop: 30}}>
-
                 <FormOutPut/>
-
             </Grid>
             <Grid item style={{color: 'white'}}>
                 {isPortrait && <p style={{fontSize: '15px', textAlign: 'center'}}>How it works</p>}
