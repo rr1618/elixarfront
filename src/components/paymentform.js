@@ -20,7 +20,7 @@ const Form1 = () => {
     const {otpContent, setOtpContent} = useContext(OtpContext)
     useEffect(() => {
         Aos.init({duration: 1000})
-    }, [])
+    }, [register])
 
     const handleSubmit = () => {
             API.sendOtp(register.mobile).then(res => {
@@ -191,26 +191,28 @@ const Form2 = () => {
 }
 const Form3 = () => {
     const {form, setForm} = useContext(FormSelectContext)
-    const {id, setId} = useContext(IdContext)
     const {register, setRegister} = useContext(RegisterContext)
+    useEffect(()=>{
+
+    },[register])
 
     const handleSubmit = () => {
         if(register.date&&register.slot)
         {
-            setForm(3)
-            // API.register(register).then(res => {
-            //     setForm(3)
-            // }).catch(
-            //     error => {
-            //         alert("Mobile Number Already registered")
-            //     }
-            // )
+
+            API.getOrderId({name:register.name,amount:'50000'}).then(
+                res=> {
+                    setRegister({...register,order_id:res.data['order_id']})
+                    setForm(3)
+                }).catch(error=>{
+                console.log("no order id")
+
+            })
+
         }
         else {
             alert("Please select date and slot")
         }
-
-        // API.update(id,{date:selectedDate,slot:slot}).then(res=>console.log("Ok tested")).catch(error=>alert('wrong details'))
 
     }
 
@@ -316,21 +318,11 @@ const Form3 = () => {
 }
 const Form4 = () => {
     const {register, setRegister} = useContext(RegisterContext)
-    const [orderId,setOrderId] = useState('')
-    const handleOrderId = ()=>{
 
-    }
     useEffect(()=>{
-        API.getOrderId({name:register.name,amount:'50000'}).then(
-            res=> {
-                console.log('order_id',res.data['order_id'])
-                setOrderId(res.data['order_id'])
 
-            }).catch(error=>{
-            console.log("no order id")
+    },[register])
 
-        })
-    },[])
     var options = {
         "key": "rzp_test_L3hv3powYQMGQn", // Enter the Key ID generated from the Dashboard
         "amount": "50000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
@@ -338,20 +330,15 @@ const Form4 = () => {
         "name": "Elixir Systems",
         "description": "Test Transaction",
         "image": "https://example.com/your_logo",
-        "order_id": {orderId}, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        "order_id": register.order_id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
         "handler": function (response){
-            console.log("payment_id",response.razorpay_payment_id)
-            console.log("order_id",orderId)
-
-            API.register({...register,payment_id:response.razorpay_payment_id,order_id:orderId,payment:true}).then(res => {
+            API.register({...register,payment_id:response.razorpay_payment_id,payment:true}).then(res => {
                     alert("Payment Made")
             }).catch(
                 error => {
                     alert("Mobile Number Already registered")
                 }
             )
-            console.log(response)
-
         },
         // "callback_url": "http://127.0.0.1:8000/api/success/",
         "prefill": {

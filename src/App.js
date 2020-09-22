@@ -1,6 +1,6 @@
 import React,{createContext,useState,Suspense} from 'react';
 import './App.css';
-import Demo from "./components/formtry";
+import {Demo,Load} from "./components/formtry";
 import Payment from "./components/paymentstatus";
 import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -16,11 +16,13 @@ function App() {
     const [form,setForm] = useState(0)
     const [register,setRegister] = useState({
         name:'rahul',
-        mobile:'',
-        school:'',
-        email:'',
-        date:'',
-        slot:'',
+        mobile:'7001476344',
+        school:'xavier',
+        email:'rahul@gmail.com',
+        date:'12/20/2020',
+        slot:'09:00',
+        order_id:'',
+        payment:false
     })
     const [otpContent,setOtpContent] = useState(null)
     const [id,setId] = useState(null)
@@ -43,6 +45,7 @@ function App() {
 
                       </Grid>}>
                             <Route exact path={'/'} component={Home}/>
+                            {/*<Route exact path={'/demo'} component={Demo}/>*/}
                             <Route exact path={'/checkout'} component={PreCheckout}/>
                             <Route exact path={'/paymentstatus'} component={Payment}/>
                       </Suspense>
