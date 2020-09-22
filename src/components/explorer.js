@@ -6,17 +6,16 @@ import Button from '@material-ui/core/Button';
 import conquerer from "../assets/conquerer.png";
 import conquererShort from '../assets/conquerershort.png'
 import explorerShort from '../assets/explorershort.png'
-import {useMediaQuery} from 'react-responsive'
 import {Link} from 'react-router-dom'
 
 const Explorer = () => {
     return (
-        <Paper elevation={5} className={'paper'} style={{backgroundColor: '#272330'}}>
+        <Paper elevation={5} className={'paper'} style={{backgroundColor: '#272330',marginRight:10}}>
             <Grid container justify={'center'}>
                 <Grid item lg={12}>
                     <img src={explorer} alt=""/>
                 </Grid>
-                <Grid item>
+                <Grid item xs={12}>
 
                     <ul>
                         <li>For class 8th to 10th</li>
@@ -60,12 +59,12 @@ const Explorer = () => {
     )
 }
 const Conquerer = () => {
-    return (<Paper elevation={5} className={'paper'} style={{backgroundColor: '#272330'}}>
+    return (<Paper elevation={5} className={'paper'} style={{backgroundColor: '#272330',marginLeft:10}}>
         <Grid container justify={'center'}>
             <Grid item lg={12}>
                 <img src={conquerer} alt=""/>
             </Grid>
-            <Grid item>
+            <Grid item xs={12}>
                 <ul>
                     <li>For class 8th to 10th</li>
                     <li>Science Explorer</li>
@@ -102,13 +101,13 @@ const ExplorerShort = () => {
                 overflow: 'hidden',
                 height: '65px'
             }}>
-                <Grid item lg={2}>
+                <Grid item  lg={2}>
 
                     <img src={explorerShort} style={{height: 70, width: 60}} alt=""/>
 
 
                 </Grid>
-                <Grid item lg={10}>
+                <Grid item  lg={10}>
                     <Link to={'/checkout'} style={{textDecoration: 'none',color:'white'}}><p>Science Explorer <br/> <span
                         style={{color: '#A3E9FF', fontSize: '.7em'}}>Course for class 8th to 10th</span></p></Link>
                 </Grid>

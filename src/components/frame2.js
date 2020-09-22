@@ -5,7 +5,7 @@ import React from "react";
 const Frame2 = ()=>{
     return(
         <Grid container style={{height:'min-content',backgroundColor:'#F4F4F4',}} justify={'center'} alignItems={'center'}>
-            <Grid item style={{marginTop:320}} xs={11}>
+            <Grid item style={{marginTop:'70vh'}} xs={11}>
                 <p id={'ina'}>In a Scientific Studey Conducted by NCERT, the <br/>Students who taught with AR, achieved 50% more
                     <br/> marks than who studied just through Books.</p>
                 <p  id={'kalamlab'} style={{color:'#8373A5'}}>

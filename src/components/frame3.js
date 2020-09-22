@@ -9,13 +9,13 @@ const Frame3 = ()=>{
             <Grid item xs={11}>
                 <p id={'kalamlabdark'}>KALAM <br/> LABS</p>
             </Grid>
-                <Grid item xs={11} lg={3}>
+                <Grid item xs={11} md={3}>
                     <p>'Innovation of The Year: 2019' <br/></p><span>-IISc Banglore</span>
                 </Grid>
-                <Grid item xs={11} lg={3}>
+                <Grid item xs={11} md={3}>
                     <p>'‘Top Ten UnderGraduate<br/> Innovation Start-Up’' </p><span>- Department of Science and Technology GOI & Tata Trust</span>
                 </Grid>
-                <Grid item xs={11} lg={3}>
+                <Grid item xs={11} md={3}>
                     <p>'‘International Top 10 Higher Education Innovation’' <br/> </p><span>- Government of Finland</span>
                 </Grid>
 

@@ -8,42 +8,14 @@ import Button from "@material-ui/core/Button";
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import MenuIcon from '@material-ui/icons/Menu';
 import {Conquerer, ConquererShort, Explorer, ExplorerShort} from "./explorer";
-import MediaCard from "./card";
 import {
     Link,
-    Element,
 } from "react-scroll";
-const list = [
-    { name: 'Shasakt Tripathi' },
-    { name: 'Harshit Awasthi' },
-    { name: 'Ahmad Faraz' },
 
-];
-const MenuItem = ({text, selected}) => {
-    return <div
-        className={`menu-item ${selected ? 'active' : ''}`}
-    >{text}</div>;
-};
 
-// All items component
-// Important! add unique key
-export const Menu = (list) =>
-    list.map(el => {
-        const {name} = el;
 
-        return <MediaCard text={name} key={name}  />;
-    });
-const Arrow = ({ text, className }) => {
-    return (
-        <div
-            className={className}
-        >{text}</div>
-    );
-};
 const Frame1=()=>{
-    const menu = Menu(list)
-    const ArrowLeft = Arrow({ text: '<', className: 'arrow-prev' });
-    const ArrowRight = Arrow({ text: '>', className: 'arrow-next' });
+
     const isPortrait = useMediaQuery({ query: '(orientation: portrait)' })
     const [show,setShow]=useState(false)
     const [drawer, setDrawer] = useState(false)
@@ -193,16 +165,16 @@ const Frame1=()=>{
                         </SwipeableDrawer>
                     </div>}
                     {/* Eaie */}
-                    <Grid  item lg={7} xs={11} style={{marginTop:30}} >
+                    <Grid  item md={8}  xs={11} style={{marginTop:30}} >
                         <Paper elevation={5} style={isPortrait?{ padding:20,borderRadius:25}:{ padding:5,borderRadius:25}}>
                             <Grid container justify={!isPortrait?'space-evenly':''} alignItems={'center'}>
-                                <Grid item lg={2}>
+                                <Grid item md={2}>
                                     <img src={eaie} alt=""/>
                                 </Grid>
-                                <Grid item lg={8}>
+                                <Grid item md={8}>
                                     <p id={'kalam'} style={{color:'#8373A5',fontSize:'15px'}}>Kalam Labs is representing Asia in the International Education Summit, Helsinki. We need your vote to make India proud & lead Ed-Tech revolution. Voting ends in 02:34 M</p>
                                 </Grid>
-                                <Grid item lg={2}>
+                                <Grid item md={2}>
                                     <Button variant={'contained'} style={{backgroundColor:'#8373A5',color:'white',borderRadius:25}}>Vote Now</Button>
                                 </Grid>
                             </Grid>
@@ -214,13 +186,13 @@ const Frame1=()=>{
                         <p id={'withau'}>With our Augmented Reality courses designed for Indian school students</p>
                     </Grid>
 
-                    <Grid item container justify={'space-evenly'} style={{marginTop:100}} lg={7}>
-                        <Grid item className={'warrior'}  xs={11} lg={5}>
+                    <Grid item container justify={'center'} style={{marginTop:100}} sm={6} md={11} lg={7}>
+                        <Grid item className={'warrior'}  xs={11} md={3} lg={5}>
                             {show?<div className={'float'}><ExplorerShort/></div>:<div id={'explorer'}><Explorer /></div>}
 
 
                         </Grid>
-                        <Grid item className={'warrior'}  xs={10} lg={5}>
+                        <Grid item className={'warrior'}  xs={10} md={3} lg={5}>
                             {show?<div className={'dfloat'}><ConquererShort/></div>:<div id={'explorer'}>{isPortrait?<div></div>:<Conquerer/>}</div>}
                         </Grid>
                     </Grid>
