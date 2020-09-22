@@ -1,6 +1,6 @@
 import React,{createContext,useState,Suspense} from 'react';
 import './App.css';
-import Form3 from "./components/formtry";
+import Demo from "./components/formtry";
 import Payment from "./components/paymentstatus";
 import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -15,7 +15,7 @@ export const IdContext = createContext(null)
 function App() {
     const [form,setForm] = useState(0)
     const [register,setRegister] = useState({
-        name:'',
+        name:'rahul',
         mobile:'',
         school:'',
         email:'',

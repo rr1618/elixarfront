@@ -317,15 +317,19 @@ const Form3 = () => {
 const Form4 = () => {
     const {register, setRegister} = useContext(RegisterContext)
     const [orderId,setOrderId] = useState('')
+    const handleOrderId = ()=>{
+
+    }
     useEffect(()=>{
-       API.getOrderId({name:register.name,amount:'50000'}).then(
-           res=> {
-               console.log(res.data['order_id'])
-               setOrderId(res.data['order_id'])
-               console.log(orderId)
-           }).catch(error=>{
-               console.log("no order id")
-       })
+        API.getOrderId({name:register.name,amount:'50000'}).then(
+            res=> {
+                console.log('order_id',res.data['order_id'])
+                setOrderId(res.data['order_id'])
+
+            }).catch(error=>{
+            console.log("no order id")
+
+        })
     },[])
     var options = {
         "key": "rzp_test_L3hv3powYQMGQn", // Enter the Key ID generated from the Dashboard
@@ -337,7 +341,8 @@ const Form4 = () => {
         "order_id": {orderId}, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
         "handler": function (response){
             console.log("payment_id",response.razorpay_payment_id)
-                console.log(orderId)
+            console.log("order_id",orderId)
+
             API.register({...register,payment_id:response.razorpay_payment_id,order_id:orderId,payment:true}).then(res => {
                     alert("Payment Made")
             }).catch(
