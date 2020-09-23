@@ -32,7 +32,7 @@ const Form1 = () => {
                 setSpin(false)
             }).catch(error => {
                 setSpin(false)
-                alert("invalid otp")
+                alert("Unable to send OTP")
             })
 
     }
@@ -145,6 +145,7 @@ const Form1 = () => {
 const Form2 = () => {
     const {form, setForm} = useContext(FormSelectContext)
     const {otpContent, setOtpContent} = useContext(OtpContext)
+    const {register, setRegister} = useContext(RegisterContext)
     const [otp, setOtp] = useState("")
     const handlesubmit = (ootp) => {
 
@@ -185,9 +186,14 @@ const Form2 = () => {
                         <Grid item style={{paddingTop: 10, paddingBottom: 30}}>
                             <Button variant={'contained'} onClick={handlesubmit}
                                     style={{backgroundColor: '#19c8ff', color: 'white',}}>Verify <br/></Button>
-                            <p style={{color: 'gray'}}>Didn't get the verification code?<a
+                            <p style={{color: 'gray'}}>Didn't get the verification code?<button
                                 style={{textDecoration: 'none', color: '#19C8FF', fontWeight: 'lighter'}}
-                                href="">Resend</a></p>
+                                onClick={()=>API.sendOtp(register.mobile).then(res => {
+                                    setOtpContent(res.data['Details'])
+                                    setForm(1)
+                                }).catch(error => {
+                                    alert("Unable to send OTP")
+                                })}>Resend</button></p>
                         </Grid>
                     </Grid>
 

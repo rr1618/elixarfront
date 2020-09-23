@@ -1,6 +1,6 @@
 import React,{createContext,useState,Suspense} from 'react';
 import './App.css';
-import Payment from "./components/paymentstatus";
+// import Payment from "./components/paymentstatus";
 import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom'
@@ -45,7 +45,7 @@ function App() {
                       </Grid>}>
                             <Route exact path={'/'} component={Home}/>
                             <Route exact path={'/checkout'} component={PreCheckout}/>
-                            <Route exact path={'/paymentstatus'} component={Payment}/>
+                            {/*<Route exact path={'/paymentstatus'} component={Payment}/>*/}
                       </Suspense>
                   </SpinnerContext.Provider>
                   </OtpContext.Provider>
