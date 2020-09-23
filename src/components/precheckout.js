@@ -22,7 +22,7 @@ const Detail = () => {
                             Practical <br/> Imagination Foundation Course</p>}
                     <span style={{color: '#8A808E', fontSize: '12px'}}>2 Weeks Course</span>
 
-                    <p>Rs. 799 <span style={{marginLeft: 80, textAlign: 'right'}}>Rs 5,999</span> <br/> <span
+                    <p>Rs. 799 <del style={{marginLeft: 80, textAlign: 'right'}}>Rs 5,999</del> <br/> <span
                         style={{fontSize: 12, fontFamily: "sans-serif"}}>Price Per Class Rs 120</span></p>
                 </Grid>
             </Grid>
@@ -103,7 +103,7 @@ const PreCheckout = () => {
                 fontWeight: 'bolder'
             }}>KALAM <br/>LABS</p></Grid>
             <Detail/>
-            <Grid item lg={5} style={{paddingTop: 30}}>
+            <Grid item xs={12} md={4} style={{paddingTop: 30}}>
                 <FormOutPut/>
             </Grid>
             <Grid item style={{color: 'white'}}>

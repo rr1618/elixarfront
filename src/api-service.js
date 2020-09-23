@@ -17,7 +17,7 @@ export default class API {
         return res
     }
     static async sendOtp(body) {
-        let res =await axios.create({baseURL: otpBaseUrl}).get(`${apikey}/VOICE/${body}/AUTOGEN`);
+        let res =await axios.create({baseURL: otpBaseUrl}).get(`${apikey}/SMS/${body}/AUTOGEN`);
         return res
     }
     static async getOrderId(body) {
@@ -26,7 +26,8 @@ export default class API {
     }
     static async verifyOtp(body) {
         console.log(body)
-        let res =await axios.create({baseURL: otpBaseUrl}).get(`${apikey}/VOICE/VERIFY/${body['sessionId']}/${body['otp']}`);
+        let res =await axios.create({baseURL: otpBaseUrl}).get(`${apikey}/SMS/VERIFY/${body['sessionId']}/${body['otp']}`);
         return res
     }
 }
+

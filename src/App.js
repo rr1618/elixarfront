@@ -9,7 +9,7 @@ const  PreCheckout = React.lazy(()=>import("./components/precheckout"));
 export const FormSelectContext = createContext(null)
 export const RegisterContext = createContext(null)
 export const OtpContext = createContext(null)
-export const IdContext = createContext(null)
+export const SpinnerContext = createContext(null)
 
 function App() {
     const [form,setForm] = useState(0)
@@ -24,7 +24,7 @@ function App() {
         payment:false
     })
     const [otpContent,setOtpContent] = useState(null)
-    const [id,setId] = useState(null)
+    const [spin,setSpin] = useState(false)
 
   return (
       <React.Fragment>
@@ -34,7 +34,7 @@ function App() {
                   <FormSelectContext.Provider value={{form,setForm}}>
                   <RegisterContext.Provider value={{register,setRegister}}>
                   <OtpContext.Provider value={{otpContent,setOtpContent}}>
-                  <IdContext.Provider value={{id,setId}}>
+                  <SpinnerContext.Provider value={{spin,setSpin}}>
                       <Suspense fallback={<Grid container justify={'center'} alignItems={'center'} style={{
                           height:'100vh'
                       }}>
@@ -47,7 +47,7 @@ function App() {
                             <Route exact path={'/checkout'} component={PreCheckout}/>
                             <Route exact path={'/paymentstatus'} component={Payment}/>
                       </Suspense>
-                  </IdContext.Provider>
+                  </SpinnerContext.Provider>
                   </OtpContext.Provider>
                   </RegisterContext.Provider>
                   </FormSelectContext.Provider>

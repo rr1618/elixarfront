@@ -5,9 +5,10 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import OtpInput from 'react-otp-input';
-import {FormSelectContext, IdContext, OtpContext, RegisterContext} from "../App";
+import {FormSelectContext,  OtpContext, RegisterContext,SpinnerContext} from "../App";
 import Aos from "aos";
 import API from "../api-service";
+import CircularProgress from '@material-ui/core/CircularProgress';
 import {FormHelperText, TextField} from '@material-ui/core';
 import {TextValidator, ValidatorForm} from "react-material-ui-form-validator";
 
@@ -15,37 +16,44 @@ import {TextValidator, ValidatorForm} from "react-material-ui-form-validator";
 const Form1 = () => {
 
     const {form, setForm} = useContext(FormSelectContext)
+    const {spin,setSpin} = useContext(SpinnerContext)
     const {register, setRegister} = useContext(RegisterContext)
-
     const {otpContent, setOtpContent} = useContext(OtpContext)
     useEffect(() => {
         Aos.init({duration: 1000})
-    }, [register])
+    }, [register,spin])
 
     const handleSubmit = () => {
+        setSpin(true)
             API.sendOtp(register.mobile).then(res => {
+                console.log(res.data)
                 setOtpContent(res.data['Details'])
                 setForm(1)
-            }).catch(error => console.log("Invalid Otp"))
+                setSpin(false)
+            }).catch(error => {
+                setSpin(false)
+                alert("invalid otp")
+            })
 
     }
     return (<React.Fragment>
         <div data-aos={'fade-zoom-in'}><Grid container>
-            <Grid item>
-                <Paper elevation={5} style={{paddingLeft: 50, paddingTop: 20, borderRadius: '4%', paddingRight: 50}}>
-                    <Grid container >
-                        <Grid item xs={12}>
+            <Grid item container justify={'center'}>
+
+                <Paper elevation={5} style={{ padding: 20, borderRadius: '4%'}}>
+                    <Grid container item justify={'center'} >
+                        <Grid item xs={10}>
                             <p>Buy Now <br/><span style={{color: 'gray', fontSize: 13}}>due to high demand only limited seats are available</span>
                             </p>
                         </Grid>
-                        <Grid item xs={8}>
+                        <Grid item xs={12} md={10}>
                             <ValidatorForm
 
                                 onSubmit={handleSubmit}
                                 onError={(errors) => console.log(errors)}
                             >
                                 <Grid item container>
-                                    <Grid item>
+                                    <Grid item xs={10}>
                                         <FormHelperText className={'helper'} id={"my-helper-text"}>Name of The
                                             Student</FormHelperText>
                                         <TextValidator
@@ -63,7 +71,7 @@ const Form1 = () => {
                                             errorMessages={["this field is required"]}
                                         />
                                     </Grid>
-                                    <Grid item>
+                                    <Grid item xs={10}>
                                         <FormHelperText className={'helper'} id="my-helper-text">School in you are
                                             studying</FormHelperText>
                                         <TextValidator
@@ -81,7 +89,7 @@ const Form1 = () => {
                                             errorMessages={["this field is required"]}
                                         />
                                     </Grid>
-                                    <Grid item>
+                                    <Grid item xs={10}>
                                         <FormHelperText className={'helper'} id="my-helper-text">Actual Email address*</FormHelperText>
                                         <TextValidator
                                             className={'input'}
@@ -98,7 +106,7 @@ const Form1 = () => {
                                             errorMessages={["this field is required", "email is not valid"]}
                                         />
                                     </Grid>
-                                    <Grid item>
+                                    <Grid item xs={10}>
                                         <FormHelperText className={'helper'} id="my-helper-text">Accessible phone number for
                                             verification</FormHelperText>
                                         <TextValidator
@@ -116,8 +124,8 @@ const Form1 = () => {
                                             errorMessages={["this field is required"]}
                                         />
                                     </Grid>
-                                    <Grid item style={{paddingTop: 10, paddingBottom: 30}}>
-                                        <Button type="submit" variant={'contained'} style={{backgroundColor: '#19C8FF', color: 'white',}}>Proceed</Button>
+                                    <Grid item xs={12} style={{paddingTop: 10, paddingBottom: 30}}>
+                                        <Button type="submit" variant={'contained'} style={{backgroundColor: '#19C8FF', color: 'white',}} endIcon={spin&&<CircularProgress color="secondary" />}>Proceed</Button>
                                     </Grid>
                                 </Grid>
 
@@ -357,14 +365,24 @@ const Form4 = () => {
 
     return (
         <div>
-            <button id="rzp-button1" onClick={(e) => {
-                rzp1.open();
-                e.preventDefault();
-            }}>Pay
-            </button>
 
 
+
+            <Grid container>
+                <Grid item>
+                    <Paper elevation={5} style={{paddingLeft: 50, paddingTop: 20, borderRadius: '4%', paddingRight: 50}}>
+
+                        <button id="rzp-button1" onClick={(e) => {
+                            rzp1.open();
+                            e.preventDefault();
+                        }}>Pay
+                        </button>
+                    </Paper>
+                </Grid>
+
+            </Grid>
         </div>
+
     )
 }
 export {Form1, Form2, Form3, Form4}

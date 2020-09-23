@@ -40,10 +40,10 @@ const Frame1=()=>{
                 <Grid className={'overlay'}   item container justify={'center'}>
                     {!isPortrait?<Grid container item style={{backgroundColor:'rgb(53,44,72,.9)'}}  justify={'center'}  >
                         <Grid item lg={3}></Grid>
-                        <Grid item container lg={4}>
+                        <Grid item container md={4}>
                             <p id={'heading'}>Kalam <br/>Labs</p>
                         </Grid>
-                        <Grid item container lg={5}
+                        <Grid item container md={5}
                               className={'navitems'}>
                             <Grid item>
                                 <p>Why Kalam</p>
@@ -60,7 +60,7 @@ const Frame1=()=>{
                         </Grid>
                     </Grid>:<div style={{width:'100%'}} >
                         <Grid   container  justify={"space-between"} style={{backgroundColor:'#15111F'}} >
-                            <Grid item lg={4}>
+                            <Grid item md={4}>
                                 <p style={{paddingLeft:10,color:'white',fontWeight:'bolder'}} >KALAM <br/> LABS</p>
                             </Grid>
                             <Grid item lg={7}>
@@ -181,7 +181,7 @@ const Frame1=()=>{
                         </Paper>
                     </Grid>
 
-                    <Grid  item lg={12} >
+                    <Grid  item xs={12} >
                         <p id={'learnscience'}>Learn science <br/> the practical way.</p>
                         <p id={'withau'}>With our Augmented Reality courses designed for Indian school students</p>
                     </Grid>

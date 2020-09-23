@@ -6,7 +6,7 @@ const Frame3 = ()=>{
 
         <Grid container   justify="center"
                className={'kalamfooter'}>
-            <Grid item xs={11}>
+            <Grid item xs={12}>
                 <p id={'kalamlabdark'}>KALAM <br/> LABS</p>
             </Grid>
                 <Grid item xs={11} md={3}>

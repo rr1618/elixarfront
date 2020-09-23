@@ -37,7 +37,7 @@ const Explorer = () => {
 
                     </Grid>
                     <Grid item>
-                        <h4 style={{color: 'white', paddingRight: 10}}>Rs. 5,999</h4>
+                        <h4 style={{color: 'white', paddingRight: 10}}><del>Rs. 5,999</del></h4>
                     </Grid>
                 </Grid>
                 <Grid item xs={12}>

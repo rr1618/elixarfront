@@ -34,11 +34,12 @@ p{
   color: #61dafb;
 }
 .container{
-  height:100vh;
+  height:160vh;
   background-size:cover;
   background-repeat:no-repeat;
   background-position:center center;
-}.container1{
+}
+.container1{
   height:100vh;
   background-size:cover;
   background-repeat:no-repeat;
@@ -377,7 +378,7 @@ and (max-width: 650px) {
     text-align: left;
   }
   .container{
-    height:min-content;
+    height:200vh;
   }
   .container1{
     padding-bottom: 700px;
