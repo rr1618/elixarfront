@@ -2,7 +2,7 @@ import axios from "axios";
 
 const base="https://elixar.herokuapp.com/"
 // const base=" http://127.0.0.1:8000/"
-const apikey = '13ffd8d0-5f33-11ea-9fa5-0200cd936042'
+const apikey = '8fdef991-fced-11ea-9fa5-0200cd936042'
 const otpBaseUrl = 'https://2factor.in/API/V1/'
 
 export default class API {
