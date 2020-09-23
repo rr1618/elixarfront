@@ -147,6 +147,7 @@ const Form2 = () => {
     const {otpContent, setOtpContent} = useContext(OtpContext)
     const {register, setRegister} = useContext(RegisterContext)
     const [otp, setOtp] = useState("")
+    const {spin,setSpin} = useContext(SpinnerContext)
     const handlesubmit = (ootp) => {
 
         API.verifyOtp({sessionId: otpContent, otp: otp}).then(res => {
@@ -155,7 +156,7 @@ const Form2 = () => {
     }
     useEffect(() => {
 
-    }, [otp, otpContent])
+    }, [otp, otpContent,spin])
     const handleChange = (otp) => {
         setOtp(otp)
     };
@@ -165,7 +166,9 @@ const Form2 = () => {
                 <Paper elevation={5} style={{paddingLeft: 50, paddingTop: 20, borderRadius: '4%', paddingRight: 50}}>
                     <Grid container direction={'column'}>
                         <Grid item>
-                            <p>Verify Your Identity <br/><span style={{color: 'gray', fontSize: 13}}>You are trying to book a Kalam labs AR course. Enter 6 digit verification code we sent you on your phone no 99*****363 Change Phone No</span>
+                            <p>Verify Your Identity <br/><span style={{color: 'gray', fontSize: 13}}>You are trying to book a Kalam
+                                labs AR course. Enter 6 digit verification code we sent you on your phone no {register.mobile}
+                                <a >Change Phone No</a></span>
                             </p>
                         </Grid>
                         <Grid item>
@@ -185,15 +188,22 @@ const Form2 = () => {
                         </Grid>
                         <Grid item style={{paddingTop: 10, paddingBottom: 30}}>
                             <Button variant={'contained'} onClick={handlesubmit}
-                                    style={{backgroundColor: '#19c8ff', color: 'white',}}>Verify <br/></Button>
-                            <p style={{color: 'gray'}}>Didn't get the verification code?<button
+                                    style={{backgroundColor: '#19c8ff', color: 'white',}}
+                                    endIcon={spin&&<CircularProgress color="secondary" />}
+                            >Verify <br/>
+                            </Button>
+                            <p style={{color: 'gray'}}>Didn't get the verification code?
+                                <button
                                 style={{textDecoration: 'none', color: '#19C8FF', fontWeight: 'lighter'}}
                                 onClick={()=>API.sendOtp(register.mobile).then(res => {
                                     setOtpContent(res.data['Details'])
                                     setForm(1)
                                 }).catch(error => {
                                     alert("Unable to send OTP")
-                                })}>Resend</button></p>
+                                })}>
+                                    Resend
+                                </button>
+                            </p>
                         </Grid>
                     </Grid>
 
@@ -206,25 +216,28 @@ const Form2 = () => {
 const Form3 = () => {
     const {form, setForm} = useContext(FormSelectContext)
     const {register, setRegister} = useContext(RegisterContext)
+    const {spin,setSpin} = useContext(SpinnerContext)
     useEffect(()=>{
-
-    },[register])
+        // console.log("order id",register.order_id)
+    },[register,spin])
 
     const handleSubmit = () => {
+        setSpin(true)
         if(register.date&&register.slot)
         {
-
             API.getOrderId({name:register.name,amount:'50000'}).then(
                 res=> {
                     setRegister({...register,order_id:res.data['order_id']})
+                    setSpin(false)
                     setForm(3)
                 }).catch(error=>{
-                console.log("no order id")
-
+                setSpin(false)
+                alert("Problem fetching order Id")
             })
 
         }
         else {
+            setSpin(false)
             alert("Please select date and slot")
         }
 
@@ -318,7 +331,7 @@ const Form3 = () => {
                         <Grid item style={{paddingTop: 10, paddingBottom: 30}}>
                             <Button variant={'contained'}
                                     style={{backgroundColor: '#19c8ff', color: 'white', fontSize: 12}}
-                                    onClick={handleSubmit}
+                                    onClick={handleSubmit} endIcon={spin&&<CircularProgress color="secondary" />}
                             >Confirm Slot and Pay <br/></Button>
 
                         </Grid>
@@ -346,13 +359,25 @@ const Form4 = () => {
         "image": "https://example.com/your_logo",
         "order_id": register.order_id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
         "handler": function (response){
-            API.register({...register,payment_id:response.razorpay_payment_id,payment:true}).then(res => {
-                    alert("Payment Made")
-            }).catch(
-                error => {
-                    alert("Mobile Number Already registered")
+            API.verifySignature({order_id:response.razorpay_order_id,payment_id:response.razorpay_payment_id,signature:response.razorpay_signature}).then(
+                res=>{
+                    API.register({...register,order_id:response.razorpay_order_id,
+                        payment_id:response.razorpay_payment_id,
+                        payment:true,
+                        payment_amount:'500',
+                        signature:response.razorpay_signature,}).then(res => {
+                        alert("Payment Made")
+                        window.location.href=`http://localhost:3000/paymentstatus/${response.razorpay_order_id}`
+                    }).catch(
+                        error => {
+                            alert("Mobile Number Already registered")
+                        }
+                    )
                 }
-            )
+            ).catch(err=>{
+                alert("signature verification failed")
+            })
+
         },
         // "callback_url": "http://127.0.0.1:8000/api/success/",
         "prefill": {
@@ -370,24 +395,67 @@ const Form4 = () => {
     var rzp1 = new window.Razorpay(options);
 
     return (
-        <div>
+        <div data-aos={'fade-zoom-in'}>
+            <Grid container justify={'center'}>
+                <Grid item xs={12}>
+                    <Paper elevation={5}
+                           style={{ paddingTop: 20, borderRadius: '4%'}}>
+                        <Grid container justify={'center'}>
+                            <Grid item xs={10}>
+                                <p style={{fontWeight:'bolder'}}>Pay now to book your slot<br/><span
+                                    style={{color: 'gray', fontSize: 13}}>Timezone (GMT+05:30) IST</span></p>
+                            </Grid>
+                            <Grid item xs={10}>
+                                <p style={{fontWeight: 'lighter', fontSize: '13px', color: '#8A808E'}}>Make a secure
+                                    payment, we use bank level security <br/> to process your payment.
+                                    Choose any of the <br/> method below.</p>
+                            </Grid>
+                            <Grid item xs={10}>
+                                <p style={{fontWeight: 'lighter', fontSize: 12, color: '#8A808E'}}>Payment Details</p>
+                            </Grid>
+                            <Grid item xs={8}>
+                                <p style={{fontWeight: 'bolder', fontSize: '13px'}}>Engineering Conquerer Course <br/>
+                                    <span
+                                        style={{fontWeight: 'lighter', color: '#8A808E'}}>For class 11th to 12th</span>
+                                </p>
+                            </Grid>
 
+                            <Grid item xs={2}>
+                                <p>Rs 5,999</p>
+                            </Grid>
+                            <Grid item xs={8}>
+                                <p style={{fontWeight: 'bolder', fontSize: '13px', color: '#C160E5'}}>Special Discount
+                                    Applies
+                                </p>
+                            </Grid>
+                            <Grid item xs={2}>
+                                <p>-Rs 5,000</p>
+                            </Grid>
+                            <Grid item container xs={10} style={{backgroundColor:'#F2F2F2',borderRadius:15,padding:'0 10px 0 10px',fontWeight:'bolder',margin:'0 0 10px 0'}} justify={'space-between'}>
+                                <Grid item xs={7}>
+                                    <p style={{}}>Total Payable after discount</p>
+                                </Grid>
+                                <Grid item xs={2}>
+                                    <p>Rs 999</p>
+                                </Grid>
+                            </Grid>
 
+                            <Grid item xs={10}>
+                                <Button variant={'contained'}
+                                        fullWidth
+                                        style={{backgroundColor: '#19c8ff', color: 'white', fontSize: 12,margin:'0 0 20px 0'}} onClick={(e) => {
+                                    rzp1.open();
+                                    e.preventDefault();
+                                }}>Pay
+                                    Securely <br/></Button>
 
-            <Grid container>
-                <Grid item>
-                    <Paper elevation={5} style={{paddingLeft: 50, paddingTop: 20, borderRadius: '4%', paddingRight: 50}}>
+                            </Grid>
+                        </Grid>
 
-                        <button id="rzp-button1" onClick={(e) => {
-                            rzp1.open();
-                            e.preventDefault();
-                        }}>Pay
-                        </button>
                     </Paper>
                 </Grid>
 
-            </Grid>
-        </div>
+            </Grid></div>
 
     )
 }

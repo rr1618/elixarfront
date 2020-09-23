@@ -1,8 +1,10 @@
-import React, {useContext} from "react";
+import React, {useContext, useEffect} from "react";
 import Grid from '@material-ui/core/Grid';
 import {useMediaQuery} from 'react-responsive'
 import {FormSelectContext} from "../App";
 import Aos from "aos";
+import Popup from "./popup";
+import Popover from '@material-ui/core/Popover';
 import conquerer from '../assets/conquerer.png'
 import {Form1, Form2, Form3,Form4} from "./paymentform";
 
@@ -94,7 +96,40 @@ const FormOutPut = () => {
 const PreCheckout = () => {
 
     const isPortrait = useMediaQuery({query: '(orientation: portrait)'})
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+useEffect(()=>{
+    setAnchorEl(true);
+},[])
+    const open = Boolean(anchorEl);
+    const id = open ? 'simple-popover' : undefined;
+
     return (<React.Fragment>
+        <Popover
+            id={id}
+            open={open}
+            anchorEl={anchorEl}
+            onClose={handleClose}
+            anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'center',
+            }}
+            transformOrigin={{
+                vertical: 'top',
+                horizontal: 'center',
+            }}
+            style={!isPortrait?{width:'80%',marginLeft:100}:{width:'95%',marginLeft:0}}
+
+        >
+            <Popup/>
+        </Popover>
         <Grid container className={'precheckout'} >
             <Grid item xs={12}><p style={{
                 textAlign: 'center',

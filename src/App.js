@@ -1,6 +1,7 @@
-import React,{createContext,useState,Suspense} from 'react';
+import React, {createContext, useState, Suspense, useEffect} from 'react';
 import './App.css';
-// import Payment from "./components/paymentstatus";
+import PaymentSuccess from "./components/paymentstatus";
+import Popup from './components/popup'
 import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom'
@@ -25,7 +26,9 @@ function App() {
     })
     const [otpContent,setOtpContent] = useState(null)
     const [spin,setSpin] = useState(false)
+    useEffect(()=>{
 
+    },[register])
   return (
       <React.Fragment>
           <Router>
@@ -45,17 +48,14 @@ function App() {
                       </Grid>}>
                             <Route exact path={'/'} component={Home}/>
                             <Route exact path={'/checkout'} component={PreCheckout}/>
-                            {/*<Route exact path={'/paymentstatus'} component={Payment}/>*/}
+                          {register.payment&&<Route exact path={'/paymentstatus/:orderId'} component={PaymentSuccess}/>}
                       </Suspense>
                   </SpinnerContext.Provider>
                   </OtpContext.Provider>
                   </RegisterContext.Provider>
                   </FormSelectContext.Provider>
-
-
               </Switch>
           </Router>
-
       </React.Fragment>
   );
 }

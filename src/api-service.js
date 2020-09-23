@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const base="https://elixar.herokuapp.com/"
-// const base=" http://127.0.0.1:8000/"
+// const base="https://elixar.herokuapp.com/"
+const base=" http://127.0.0.1:8000/"
 const apikey = '8fdef991-fced-11ea-9fa5-0200cd936042'
 const otpBaseUrl = 'https://2factor.in/API/V1/'
 
@@ -9,6 +9,11 @@ export default class API {
     static async register(body) {
         console.log("register contents",body)
         let res =await axios.create({baseURL: base}).post("api/register/", body);
+        return res
+    }
+    static async verifySignature(body) {
+        console.log("register contents",body)
+        let res =await axios.create({baseURL: base}).post("api/verify_signature/", body);
         return res
     }
     static async update(id,body) {
