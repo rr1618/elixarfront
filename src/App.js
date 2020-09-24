@@ -48,7 +48,7 @@ function App() {
                       </Grid>}>
                             <Route exact path={'/'} component={Home}/>
                             <Route exact path={'/checkout'} component={PreCheckout}/>
-                          {register.payment&&<Route exact path={'/paymentstatus/:orderId'} component={PaymentSuccess}/>}
+                         <Route exact path={'/paymentstatus/:orderId'} component={PaymentSuccess}/>
                       </Suspense>
                   </SpinnerContext.Provider>
                   </OtpContext.Provider>
