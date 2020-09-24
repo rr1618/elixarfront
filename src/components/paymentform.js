@@ -367,7 +367,7 @@ const Form4 = () => {
                         payment_amount:'500',
                         signature:response.razorpay_signature,}).then(res => {
                         alert("Payment Made")
-                        window.location.href=`https://elixar.netlify.app/paymentstatus/${response.razorpay_order_id}`
+                        window.location.href=`https://kalamlabs.netlify.app/paymentstatus/${response.razorpay_order_id}`
                     }).catch(
                         error => {
                             alert("Mobile Number Already registered")
