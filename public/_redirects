@@ -1,2 +1,1 @@
-/checkout             /checkout
-/paymentstatus/*      /paymentstatus/:orderId
+/*   /index.html   200
