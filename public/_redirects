@@ -1,2 +1,2 @@
 /*   /index.html   200
-/paymentstatus/*     /paymentstatus/:orderId   200!
+/paymentstatus/*     /paymentstatus/:splat
