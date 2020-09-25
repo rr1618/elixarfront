@@ -1,20 +1,48 @@
 import hardware from "../assets/hardware.png";
 import Grid from "@material-ui/core/Grid";
-import React from "react";
+import React, {useEffect} from "react";
+import Aos from "aos";
+import "aos/dist/aos.css"
 
 const Frame4=()=>{
+    useEffect(() => {
+
+        Aos.init({duration: 1000,
+            // disable:'mobile'
+        })
+    }, [])
     return(<Grid container className={'container'} direction={'column'}   style={{textAlign:'center',backgroundImage: "url("+`${hardware}`+")",padding:15}}  >
         <Grid item  >
-            <p style={{color:'#C160E5' }}>Why Kalam Labs learning courses</p>
+            <div
+                data-aos={'slide-up'}
+            >
+                <p style={{color:'#C160E5' }}>Why Kalam Labs learning courses</p>
+            </div>
+
         </Grid>
         <Grid item >
+            <div
+                data-aos={'slide-up'}
+                data-aos-delay="100"
+
+            >
             <p id={'weteach'}>We teach you about the science. <br/> By changing how you see it.</p>
+            </div>
         </Grid>
         <Grid item >
+            <div
+                data-aos={'slide-up'}
+                data-aos-delay="100"
+
+            >
             <p style={{color:'#8373A5'}}>Kalam Labs augmented reality combines the digital and the real world. Our AR corses brings school <br/> subjects and information into the environment within an app, taking students beyond the screen and <br/> practically teaching in entirely new ways.</p>
+            </div>
         </Grid>
         <Grid item >
-            <div >
+            <div
+                data-aos={'slide-up'}
+                data-aos-delay="100"
+            >
                 <p style={{color:'#8373A5'}}>• Spark engagement through movement and lifelike exploration <br/>
                     • Visualise and experiment with abstract concepts<br/>
                     • Go deeper into hidden layers and systems<br/>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Grid from "@material-ui/core/Grid";
 import './about.css'
 import Button from "@material-ui/core/Button";
@@ -16,19 +16,36 @@ import tata from '../assets/tata.png'
 import payu from '../assets/s1.svg'
 import paytm from '../assets/s2.svg'
 import rupay from '../assets/s3.svg'
+import Aos from "aos";
+import "aos/dist/aos.css"
 
 const About = () => {
+    useEffect(() => {
+
+        Aos.init({duration: 1000,
+            // disable:'mobile'
+        })
+    }, [])
     return (
         <Grid container className={'about'}>
             <Grid item container justify={'center'} style={{padding: 8}}>
                 <Grid item md={8} className={'whoweare'} >
-                    <h5 style={{color: '#8A808E', fontSize: 20}}>WHO WE ARE</h5>
+                    <div
+                        data-aos={'slide-up'}
+                    >
+                        <h5 style={{color: '#8A808E', fontSize: 20}}>WHO WE ARE</h5>
+                    </div>
+                    <div
+                        data-aos={'fade-in'}
+                        data-aos-delay="100"
+                    >
                     <p>
                         What if the line between your learning and the practicality didn’t exist? With Kalam labs
                         augmented reality, not only is that possible, it’s here. Our products transforms how you learn,
                         play, work, teach and connect with the world around you. It’s the perfect way to visualise
                         things that would be impossible or impractical to see otherwise.
                     </p>
+                    </div>
                 </Grid>
                 <Grid item md={8}>
                     <Paper elevation={3} style={{padding: 20}}>

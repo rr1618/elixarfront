@@ -1,4 +1,6 @@
 import React, {useEffect, useState} from "react";
+import Aos from "aos";
+import "aos/dist/aos.css"
 import {useMediaQuery} from "react-responsive";
 import Grid from "@material-ui/core/Grid";
 import frame1 from "../assets/frame1.png";
@@ -16,6 +18,9 @@ import {
 
 
 const Frame1=()=>{
+    useEffect(() => {
+        Aos.init({duration: 1000})
+    }, [])
 
     const isPortrait = useMediaQuery({ query: '(orientation: portrait)' })
     const [show,setShow]=useState(false)
@@ -160,10 +165,21 @@ const Frame1=()=>{
                         </Paper>
                     </Grid>
 
-                    <Grid  item xs={12} >
-                        <p id={'learnscience'}>Learn science <br/> the practical way.</p>
-                        <p id={'withau'}>With our Augmented Reality courses designed for Indian school students</p>
-                    </Grid>
+
+                        <Grid  item xs={12} >
+                            <div
+                                data-aos="slide-up"
+                            >
+                            <p id={'learnscience'}>Learn science <br/> the practical way.</p>
+                            </div>
+                            <div
+                                data-aos="slide-up"
+                                data-aos-delay="200"
+                            >
+                            <p id={'withau'}>With our Augmented Reality courses designed for Indian school students</p>
+                            </div>
+                        </Grid>
+
 
                     <Grid item container justify={'center'} style={{marginTop:100}} sm={6} md={11} lg={7}>
                         <Grid item className={'warrior'}  xs={11} md={3} lg={5}>

@@ -9,6 +9,12 @@ import conquerer from '../assets/conquerer.png'
 import {Form1, Form2, Form3,Form4} from "./paymentform";
 
 const Detail = () => {
+    useEffect(() => {
+
+        Aos.init({duration: 1000,
+            // disable:'mobile'
+        })
+    }, [])
     const isPortrait = useMediaQuery({query: '(orientation: portrait)'})
     return (<React.Fragment>
         <Grid container item lg={6} justify={'center'} alignItems={'center'}>
@@ -17,15 +23,34 @@ const Detail = () => {
             </Grid>
             <Grid item container direction={'column'} xs={8} lg={4}>
                 <Grid item style={{color: 'white'}}>
-                    <p>Engineering Conquerer <br/><span style={{color: '#8A808E', fontSize: '13px'}}>Course for class 11th to 12th</span>
-                    </p>
-                    {isPortrait ? <div></div> :
-                        <p style={{fontSize: 13, fontFamily: "inherit"}}>An Augmented Reality based
-                            Practical <br/> Imagination Foundation Course</p>}
-                    <span style={{color: '#8A808E', fontSize: '12px'}}>2 Weeks Course</span>
+                    <div
+                        data-aos={'slide-up'}
 
+                    >
+                    <p>Engineering Conquerer <br/><span style={{color: '#8A808E', fontSize: '13px'}}>
+
+
+                    Course for class 11th to 12th</span>
+                    </p></div>
+                    {isPortrait ? <div></div> :
+                       <div
+                        data-aos={'slide-up'}
+                        data-aos-delay="100"
+                       > <p style={{fontSize: 13, fontFamily: "inherit"}}>An Augmented Reality based
+                           Practical <br/> Imagination Foundation Course</p></div>}
+                    <div
+                        data-aos={'slide-up'}
+                        data-aos-delay="200"
+                    >
+                    <span style={{color: '#8A808E', fontSize: '12px'}}>2 Weeks Course</span>
+                    </div>
+                    <div
+                        data-aos={'slide-up'}
+                        data-aos-delay="300"
+                    >
                     <p>Rs. 799 <del style={{marginLeft: 80, textAlign: 'right'}}>Rs 5,999</del> <br/> <span
                         style={{fontSize: 12, fontFamily: "sans-serif"}}>Price Per Class Rs 120</span></p>
+                    </div>
                 </Grid>
             </Grid>
             <Grid item container direction={'column'} lg={12} justify={'center'} alignItems={'center'}>
@@ -45,28 +70,48 @@ const Detail = () => {
                                 <p><span>1 </span></p>
                             </Grid>
                             <Grid item lg={8}>
+                                <div
+                                    data-aos={'slide-up'}
+                                >
                                 <p>An Augmented Reality based Practical Imagination Foundation Course</p>
+                                </div>
                             </Grid>
                         </Grid><Grid item container lg={8}>
                         <Grid item lg={3}>
                             <p><span>2 </span></p>
                         </Grid>
                         <Grid item lg={8}>
+                            <div
+                                data-aos={'slide-up'}
+                                data-aos-delay="100"
+                            >
                             <p>An Augmented Reality based Practical Imagination Foundation Course</p>
+                            </div>
                         </Grid>
                     </Grid><Grid item container lg={8}>
                         <Grid item lg={3}>
                             <p><span>3 </span></p>
                         </Grid>
                         <Grid item lg={8}>
-                            <p>An Augmented Reality based Practical Imagination Foundation Course</p>
+                            <div
+                                data-aos={'slide-up'}
+                                data-aos-delay="200"
+                            >
+                                <p>An Augmented Reality based Practical Imagination Foundation Course</p></div>
                         </Grid>
-                    </Grid><Grid item container lg={8}>
+                    </Grid>
+                        <Grid item container lg={8}>
                         <Grid item lg={3}>
                             <p><span>4 </span></p>
                         </Grid>
                         <Grid item lg={8}>
+                            <div
+                                data-aos={'fade-down'}
+                                // data-aos-delay="300"
+                                data-aos-offset="-100"
+                            >
                             <p>An Augmented Reality based Practical Imagination Foundation Course</p>
+                            </div>
                         </Grid>
                     </Grid>
                     </Grid>}
@@ -106,30 +151,30 @@ const PreCheckout = () => {
         setAnchorEl(null);
     };
 useEffect(()=>{
-    setAnchorEl(true);
+    // setAnchorEl(true);
 },[])
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
 
     return (<React.Fragment>
-        <Popover
-            id={id}
-            open={open}
-            anchorEl={anchorEl}
-            onClose={handleClose}
-            anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'center',
-            }}
-            transformOrigin={{
-                vertical: 'top',
-                horizontal: 'center',
-            }}
-            style={!isPortrait?{width:'80%',marginLeft:100}:{width:'95%',marginLeft:0}}
+        {/*<Popover*/}
+        {/*    id={id}*/}
+        {/*    open={open}*/}
+        {/*    anchorEl={anchorEl}*/}
+        {/*    onClose={handleClose}*/}
+        {/*    anchorOrigin={{*/}
+        {/*        vertical: 'bottom',*/}
+        {/*        horizontal: 'center',*/}
+        {/*    }}*/}
+        {/*    transformOrigin={{*/}
+        {/*        vertical: 'top',*/}
+        {/*        horizontal: 'center',*/}
+        {/*    }}*/}
+        {/*    style={!isPortrait?{width:'80%',marginLeft:100}:{width:'95%',marginLeft:0}}*/}
 
-        >
-            <Popup/>
-        </Popover>
+        {/*>*/}
+        {/*    <Popup/>*/}
+        {/*</Popover>*/}
         <Grid container className={'precheckout'} >
             <Grid item xs={12}><p style={{
                 textAlign: 'center',
