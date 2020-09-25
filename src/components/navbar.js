@@ -47,8 +47,6 @@ const Nav = ()=>
                     <Grid item>
                         <p style={{color:'white',fontWeight:'bolder'}}>KALAM <br/>LABS</p>
                     </Grid>
-
-
                 </Grid>
                 <Grid item container justify={'center'}  md={4}>
                     <Grid item md={3}>

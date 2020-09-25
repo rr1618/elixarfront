@@ -2,7 +2,7 @@ import { TextField } from '@material-ui/core';
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import conquerer from "../assets/conquerer.png";
-import kalamcollage from '../assets/kalamlabcollage (1).jpg'
+import kalamcollage from '../assets/collage.png'
 import Button from '@material-ui/core/Button';
 import React, {useEffect} from "react";
 import Aos from "aos";
@@ -56,7 +56,7 @@ const Frame5=()=>{
                 </Paper>
 
             </Grid>
-            <Grid item container justify={'center'} style={{padding:8}}>
+            <Grid item container justify={'center'} style={{padding:0}}>
                 <Grid item >
                     <img src={kalamcollage} style={{width:'100%'}} alt=""/>
                 </Grid>

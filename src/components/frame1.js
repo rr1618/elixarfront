@@ -47,14 +47,25 @@ const Frame1=()=>{
             <Grid container  className={'container1'} style={{backgroundImage: "url("+`${frame1}`+")",}} justify="center"  alignItems={'center'}  >
                 <Grid className={'overlay'}   item container justify={'center'}>
                     {!isPortrait?<Nav/>:<div style={{width:'100%'}} >
-                        <Grid   container  justify={"space-between"} style={{backgroundColor:'#15111F'}} >
-                            <Grid item md={4}>
-                                <p style={{paddingLeft:10,color:'white',fontWeight:'bolder'}} > KALAM <br/> LABS</p>
+                        <Grid   container
+                                style={{backgroundColor:'#15111F'}} >
+                            <Grid item container xs={5} md={5}
+                                  justify="flex-start">
+                                <Grid item >
+                                    <img src={logo} height={40} style={{marginLeft:5,marginTop:13}}  alt=""/>
+                                </Grid>
+                                <Grid item >
+                                    <p style={{color:'white',fontWeight:'bolder'}}>KALAM <br/>LABS</p>
+                                </Grid>
                             </Grid>
-                            <Grid item lg={7}>
-                                <Button onClick={() => {
-                                    setDrawer(true)
-                                }}><MenuIcon style={{fontSize: 40, color: 'white'}}/></Button>
+                            <Grid item container xs={7} md={7} justify="flex-end"
+                                  alignItems="center">
+                                <Grid item>
+                                    <Button onClick={() => {
+                                        setDrawer(true)
+                                    }}><MenuIcon style={{fontSize: 40, color: 'white'}}/></Button>
+                                </Grid>
+
                             </Grid>
 
                         </Grid>
@@ -65,27 +76,29 @@ const Frame1=()=>{
                             <Grid container justify={'center'} alignItems={'center'} direction={'column'} style={{
                                 width: '70vw',
                                 height: '120vh',
-                                color: 'yellow',
-                                background: 'linear-gradient(to right, #247982, #89CFE9)'
+                                color: 'white',
+                                backgroundColor:'#15111F'
+
                             }} spacing={5}>
                                 <Grid item>
-                                    <img style={{padding: 10}} src={'logo'} height={100} alt=""/>
+                                    <img style={{padding: 10}} src={logo} height={50} alt=""/>
 
                                 </Grid>
 
                                 <Grid item>
                                     <Link
-                                        to="home"
+                                        to="whykalam"
                                         spy={true}
                                         hashSpy={true}
                                         smooth={true}
+                                        offset={-60}
                                         duration={1000}
                                         style={{padding: 10}}
                                         onClick={() => {
                                             setDrawer(false)
                                         }}
                                     >
-                                        Home
+                                        Why Kalam
                                     </Link>
                                 </Grid>
                                 <Grid item>
@@ -94,6 +107,7 @@ const Frame1=()=>{
                                         spy={true}
                                         hashSpy={true}
                                         smooth={true}
+                                        offset={-60}
                                         duration={500}
                                         style={{padding: 10}}
                                         onClick={() => {
@@ -105,49 +119,51 @@ const Frame1=()=>{
                                 </Grid>
                                 <Grid item>
                                     <Link
-                                        to="service"
+                                        to="people"
                                         spy={true}
                                         hashSpy={true}
                                         smooth={true}
+                                        offset={-60}
                                         duration={500}
                                         style={{padding: 10}}
                                         onClick={() => {
                                             setDrawer(false)
                                         }}
                                     >
-                                        Services
+                                        People
                                     </Link>
                                 </Grid>
                                 <Grid item>
                                     <Link
-                                        to="work"
+                                        to="about"
                                         spy={true}
                                         hashSpy={true}
                                         smooth={true}
+                                        offset={-60}
                                         duration={500}
                                         style={{padding: 10}}
                                         onClick={() => {
                                             setDrawer(false)
                                         }}
                                     >
-                                        Work
+                                        About
                                     </Link>
                                 </Grid>
-                                <Grid item>
-                                    <Link
-                                        to="contact"
-                                        spy={true}
-                                        hashSpy={true}
-                                        smooth={true}
-                                        duration={500}
-                                        style={{padding: 10}}
-                                        onClick={() => {
-                                            setDrawer(false)
-                                        }}
-                                    >
-                                        Contact Us
-                                    </Link>
-                                </Grid>
+                                {/*<Grid item>*/}
+                                {/*    <Link*/}
+                                {/*        to="contact"*/}
+                                {/*        spy={true}*/}
+                                {/*        hashSpy={true}*/}
+                                {/*        smooth={true}*/}
+                                {/*        duration={500}*/}
+                                {/*        style={{padding: 10}}*/}
+                                {/*        onClick={() => {*/}
+                                {/*            setDrawer(false)*/}
+                                {/*        }}*/}
+                                {/*    >*/}
+                                {/*        Contact Us*/}
+                                {/*    </Link>*/}
+                                {/*</Grid>*/}
 
                             </Grid>
                         </SwipeableDrawer>
@@ -155,15 +171,15 @@ const Frame1=()=>{
                     {/* Eaie */}
                     <Grid  item md={8}  xs={11} style={{marginTop:80}} >
                         <Paper elevation={5} style={isPortrait?{ padding:20,borderRadius:25}:{ padding:5,borderRadius:25}}>
-                            <Grid container justify={!isPortrait?'center':''} alignItems={'center'} >
-                                <Grid item md={1} >
-                                    <img src={logo} height={50} alt="" style={{marginLeft:40}}/>
+                            <Grid container justify={!isPortrait?'center':'flex-start'}  >
+                                <Grid item xs={2} md={1} >
+                                    <img src={logo} height={50} alt="" style={{marginLeft:15}}/>
                                 </Grid>
                                 <Grid item md={10}>
                                     <p id={'kalam'} style={{color:'#8373A5',fontSize:'15px'}}> Kalam labs has Won the International Education Innovation Award by Finland Government. Out of 1400 entries, Elixar System’s Kalam Labs has won the Global Title. </p>
                                 </Grid>
-                                <Grid item md={1}>
-                                    <img src={medal} height={50} alt=""/>
+                                <Grid item xs={2} md={1}>
+                                    <img src={medal} height={50} style={{marginLeft:15}} alt=""/>
                                 </Grid>
 
                             </Grid>

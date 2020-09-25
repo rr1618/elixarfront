@@ -1,6 +1,7 @@
 import React, {useEffect} from "react";
 import Grid from "@material-ui/core/Grid";
 import './about.css'
+import {useMediaQuery} from "react-responsive";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import airbus from '../assets/airbus.png'
@@ -21,6 +22,7 @@ import "aos/dist/aos.css"
 import logo from '../assets/logo.png'
 
 const About = () => {
+    const isPortrait = useMediaQuery({ query: '(orientation: portrait)' })
     useEffect(() => {
 
         Aos.init({duration: 1000,
@@ -100,9 +102,10 @@ const About = () => {
             </Grid>
 
             <Grid item container className={'footer'} style={{backgroundColor: '#15111F', padding: 10}} justify={'center'}>
-                <Grid item container xs={12} md={3} style={{marginLeft:60}}  >
+                <Grid item container xs={12} md={3}   >
                     <Grid item>
-                        <img src={logo}  style={{height:40,marginTop:15}} alt=""/>
+
+                        {isPortrait?<img src={logo}  style={{height:40,marginTop:2}} alt=""/>:<img src={logo}  style={{height:40,marginTop:15}} alt=""/>}
                     </Grid>
                     <Grid item>
                         <p style={{color:'white',fontWeight:'bolder'}}>KALAM <br/>LABS</p>
