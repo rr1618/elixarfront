@@ -7,6 +7,7 @@ import eaie from "../assets/eaie.png";
 import Button from "@material-ui/core/Button";
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import MenuIcon from '@material-ui/icons/Menu';
+import Nav from "./navbar";
 import {Conquerer, ConquererShort, Explorer, ExplorerShort} from "./explorer";
 import {
     Link,
@@ -38,27 +39,7 @@ const Frame1=()=>{
     return(
             <Grid container  className={'container1'} style={{backgroundImage: "url("+`${frame1}`+")",}} justify="center"  alignItems={'center'}  >
                 <Grid className={'overlay'}   item container justify={'center'}>
-                    {!isPortrait?<Grid container item style={{backgroundColor:'rgb(53,44,72,.9)'}}  justify={'center'}  >
-                        <Grid item lg={3}></Grid>
-                        <Grid item container md={4}>
-                            <p id={'heading'}>Kalam <br/>Labs</p>
-                        </Grid>
-                        <Grid item container md={5}
-                              className={'navitems'}>
-                            <Grid item>
-                                <p>Why Kalam</p>
-                            </Grid>
-                            <Grid item>
-                                <p>People</p>
-                            </Grid>
-                            <Grid item>
-                                <p>About</p>
-                            </Grid>
-                            <Grid item>
-                                <p>Book A Free Trial</p>
-                            </Grid>
-                        </Grid>
-                    </Grid>:<div style={{width:'100%'}} >
+                    {!isPortrait?<Nav/>:<div style={{width:'100%'}} >
                         <Grid   container  justify={"space-between"} style={{backgroundColor:'#15111F'}} >
                             <Grid item md={4}>
                                 <p style={{paddingLeft:10,color:'white',fontWeight:'bolder'}} >KALAM <br/> LABS</p>
@@ -165,7 +146,7 @@ const Frame1=()=>{
                         </SwipeableDrawer>
                     </div>}
                     {/* Eaie */}
-                    <Grid  item md={8}  xs={11} style={{marginTop:30}} >
+                    <Grid  item md={8}  xs={11} style={{marginTop:80}} >
                         <Paper elevation={5} style={isPortrait?{ padding:20,borderRadius:25}:{ padding:5,borderRadius:25}}>
                             <Grid container justify={!isPortrait?'space-evenly':''} alignItems={'center'}>
                                 <Grid item md={2}>
@@ -174,9 +155,7 @@ const Frame1=()=>{
                                 <Grid item md={8}>
                                     <p id={'kalam'} style={{color:'#8373A5',fontSize:'15px'}}>Kalam Labs is representing Asia in the International Education Summit, Helsinki. We need your vote to make India proud & lead Ed-Tech revolution. Voting ends in 02:34 M</p>
                                 </Grid>
-                                <Grid item md={2}>
-                                    <Button variant={'contained'} style={{backgroundColor:'#8373A5',color:'white',borderRadius:25}}>Vote Now</Button>
-                                </Grid>
+
                             </Grid>
                         </Paper>
                     </Grid>

@@ -141,9 +141,22 @@ useEffect(()=>{
             <Grid item xs={12} md={4} style={{paddingTop: 30}}>
                 <FormOutPut/>
             </Grid>
-            <Grid item style={{color: 'white'}}>
-                {isPortrait && <p style={{fontSize: '15px', textAlign: 'center'}}>How it works</p>}
-            </Grid>
+
+                {isPortrait && <Grid item container xs={12}  style={{color: 'white'}}>
+                <Grid item xs={12}>
+                    <p style={{color:'#19C8FF',textAlign:'center'}}>How it works</p>
+                </Grid>
+                    <Grid item>
+                    <p style={{color:'white',paddingLeft:10}}>For any assistance or enquiry please contact us.</p>
+                </Grid>
+                    <Grid item>
+                    <p style={{color:'#8373A5',paddingLeft:10}}>Email: kalam-labs@elixarsystems.com</p>
+                </Grid>
+                    <Grid item>
+                    <p style={{color:'#8373A5',paddingLeft:10}}>Phone: +91 9897676787</p>
+                </Grid>
+                </Grid>}
+
         </Grid>
 
     </React.Fragment>)
