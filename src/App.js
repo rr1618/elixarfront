@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom'
 import Nav from "./components/navbar";
+import {useMediaQuery} from "react-responsive";
 const  Home = React.lazy(()=>import("./components/home"));
 const  PreCheckout = React.lazy(()=>import("./components/precheckout"));
 export const FormSelectContext = createContext(null)
@@ -17,6 +18,7 @@ export const BookFreeContext = createContext(null)
 function App() {
     const [form,setForm] = useState(0)
     const [book,setBook] = useState(false)
+
     const [register,setRegister] = useState({
         name:'',
         mobile:'',

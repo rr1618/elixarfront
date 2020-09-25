@@ -97,6 +97,12 @@ h{
   top: 0;
 }
 
+.popup{
+  background-color:#F5FFFE;
+  padding:20px;
+  padding-left:60px;
+}
+
 .paper img{
   width: 160px;
   position: relative;
@@ -340,6 +346,11 @@ and (max-width: 650px) {
     padding: 0;
     font-size: 12px;
 
+  }
+  .popup{
+    /*background-color:#F5FFFE;*/
+    padding:20px;
+    /*padding-left:60px;*/
   }
   .order-details .order-number {
     border-top: 1px solid #ccc;

@@ -1,6 +1,9 @@
 import React, {useContext, useEffect} from "react";
 import Aos from "aos";
 import "aos/dist/aos.css"
+import { makeStyles } from '@material-ui/core/styles';
+import Popover from '@material-ui/core/Popover';
+import Popup from "./popup";
 import explorer from '../assets/explorer.png'
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -9,17 +12,53 @@ import conquerer from "../assets/conquerer.png";
 import conquererShort from '../assets/conquerershort.png'
 import explorerShort from '../assets/explorershort.png'
 import {Link} from 'react-router-dom'
+const useStyles = makeStyles((theme) => ({
+    typography: {
+        padding: theme.spacing(2),
+    },
+}));
 
 const Explorer = () => {
+    const classes = useStyles();
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    const open = Boolean(anchorEl);
+    const id = open ? 'simple-popover' : undefined;
     useEffect(() => {
         Aos.init({duration: 1000})
     }, [])
     return (
+
         <div
             data-aos="slide-up"
             // data-aos-easing="ease-in-sine"
             data-aos-delay="500"
         >
+            <Popover
+                id={id}
+                open={open}
+                anchorEl={anchorEl}
+                onClose={handleClose}
+                anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'left',
+                }}
+                transformOrigin={{
+                    vertical: 'center',
+                    horizontal: 'left',
+                }}
+            >
+
+                <Popup/>
+            </Popover>
             <Paper elevation={5} className={'paper'} style={{backgroundColor: '#272330', marginRight: 10}}>
                 <Grid container justify={'center'}>
                     <Grid item lg={12}>
@@ -34,7 +73,7 @@ const Explorer = () => {
                                 Imagination Foundation Course
                             </li>
                             <li>2 Weeks Course</li>
-                            <li>2 View Detailed Curriculum</li>
+                            <li onClick={handleClick}>2 View Detailed Curriculum</li>
                             <li>2 Book A Free AR Trial Now</li>
                         </ul>
                     </Grid>
@@ -83,6 +122,7 @@ const Conquerer = () => {
         // data-aos-easing="ease-in-sine"
         data-aos-delay="500"
             >
+
         <Paper elevation={5} className={'paper'} style={{backgroundColor: '#272330', marginLeft: 10}}>
             <Grid container justify={'center'}>
                 <Grid item lg={12}>
@@ -96,11 +136,13 @@ const Conquerer = () => {
                             Imagination Foundation Course
                         </li>
                         <li>2 Weeks Course</li>
-                        <li>2 View Detailed Curriculum</li>
+                        <li >2 View Detailed Curriculum</li>
                     </ul>
                 </Grid>
                 <Grid item>
-                   <Link to={'/checkout/trial'}>
+                   <Link to={'/checkout/trial'}
+                    style={{textDecoration:'none'}}
+                   >
                        <Button variant={'contained'}
 
                                style={{
