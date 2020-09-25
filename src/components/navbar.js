@@ -3,11 +3,11 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import Grid from "@material-ui/core/Grid";
 import './nav.css'
-
 import {
     Link,
     Element,
 } from "react-scroll";
+import logo from "../assets/logo.png";
 const useStyles = makeStyles({
     root: {
         width: '100%',
@@ -40,8 +40,15 @@ const Nav = ()=>
     return (
         <React.Fragment>
             <Grid container id={'navbar'}  justify={'center'} className={'navbar'}  style={{textAlign:'center',color:'#8A808E'}}>
-                <Grid item md={5}>
-                    <p style={{color:'white',fontWeight:'bolder'}}>KALAM <br/>LABS</p>
+                <Grid item container md={5} >
+                    <Grid item>
+                        <img src={logo} height={50} style={{marginTop:4}} alt=""/>
+                    </Grid>
+                    <Grid item>
+                        <p style={{color:'white',fontWeight:'bolder'}}>KALAM <br/>LABS</p>
+                    </Grid>
+
+
                 </Grid>
                 <Grid item container justify={'center'}  md={4}>
                     <Grid item md={3}>

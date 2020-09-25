@@ -8,20 +8,26 @@ import OtpInput from 'react-otp-input';
 import {FormSelectContext,  OtpContext, RegisterContext,SpinnerContext} from "../App";
 import Aos from "aos";
 import API from "../api-service";
+import {
+    useParams
+} from "react-router-dom";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import {FormHelperText, TextField} from '@material-ui/core';
 import {TextValidator, ValidatorForm} from "react-material-ui-form-validator";
 
 
 const Form1 = () => {
-
+    const {trial}  =useParams()
+    const [text,setText] = useState('Buy now')
     const {form, setForm} = useContext(FormSelectContext)
     const {spin,setSpin} = useContext(SpinnerContext)
     const {register, setRegister} = useContext(RegisterContext)
     const {otpContent, setOtpContent} = useContext(OtpContext)
     useEffect(() => {
         Aos.init({duration: 1000})
-    }, [register,spin])
+        if(trial=='trial')
+            setText('Book A Free Trial')
+    }, [register,spin,trial])
 
     const handleSubmit = () => {
         setSpin(true)
@@ -43,7 +49,8 @@ const Form1 = () => {
                 <Paper elevation={5} style={{ padding: 20, borderRadius: '4%'}}>
                     <Grid container item justify={'center'} >
                         <Grid item xs={10}>
-                            <p>Buy Now <br/><span style={{color: 'gray', fontSize: 13}}>due to high demand only limited seats are available</span>
+
+                            <p>{text} <br/><span style={{color: 'gray', fontSize: 13}}>due to high demand only limited seats are available</span>
                             </p>
                         </Grid>
                         <Grid item xs={12} md={10}>
@@ -217,6 +224,7 @@ const Form3 = () => {
     const {form, setForm} = useContext(FormSelectContext)
     const {register, setRegister} = useContext(RegisterContext)
     const {spin,setSpin} = useContext(SpinnerContext)
+    const {trial} = useParams()
     useEffect(()=>{
         // console.log("order id",register.order_id)
     },[register,spin])
@@ -225,6 +233,7 @@ const Form3 = () => {
         setSpin(true)
         if(register.date&&register.slot)
         {
+            if(trial=='buycourse')
             API.getOrderId({name:register.name,amount:'50000'}).then(
                 res=> {
                     setRegister({...register,order_id:res.data['order_id']})
@@ -234,6 +243,16 @@ const Form3 = () => {
                 setSpin(false)
                 alert("Problem fetching order Id")
             })
+            if(trial=='booktrial')
+                API.bookTrial({register}).then(
+                    res=> {
+                        setSpin(false)
+                        alert('Response Saved')
+                    }).catch(error=>{
+                    setSpin(false)
+                    alert("Problem saving response")
+                })
+
 
         }
         else {
@@ -351,13 +370,13 @@ const Form4 = () => {
     },[register])
 
     var options = {
-        "key": "rzp_test_L3hv3powYQMGQn", // Enter the Key ID generated from the Dashboard
-        "amount": "50000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        "key": "rzp_test_L3hv3powYQMGQn",
+        "amount": "50000",
         "currency": "INR",
         "name": "Elixir Systems",
         "description": "Test Transaction",
         "image": "https://example.com/your_logo",
-        "order_id": register.order_id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        "order_id": register.order_id,
         "handler": function (response){
             API.verifySignature({order_id:response.razorpay_order_id,payment_id:response.razorpay_payment_id,signature:response.razorpay_signature}).then(
                 res=>{

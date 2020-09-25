@@ -10,6 +10,8 @@ import Button from "@material-ui/core/Button";
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import MenuIcon from '@material-ui/icons/Menu';
 import Nav from "./navbar";
+import logo from '../assets/logo.png'
+import medal from '../assets/medal.jpg'
 import {Conquerer, ConquererShort, Explorer, ExplorerShort} from "./explorer";
 import {
     Link,
@@ -30,7 +32,7 @@ const Frame1=()=>{
         const float = document.getElementById("explorer")
         const pos  = float.offsetTop
         const scrollCallBack=window.addEventListener("scroll",()=> {
-            console.log(window.pageYOffset,pos)
+
             if(window.pageYOffset>pos){
                 setShow(true)
             }
@@ -47,7 +49,7 @@ const Frame1=()=>{
                     {!isPortrait?<Nav/>:<div style={{width:'100%'}} >
                         <Grid   container  justify={"space-between"} style={{backgroundColor:'#15111F'}} >
                             <Grid item md={4}>
-                                <p style={{paddingLeft:10,color:'white',fontWeight:'bolder'}} >KALAM <br/> LABS</p>
+                                <p style={{paddingLeft:10,color:'white',fontWeight:'bolder'}} > KALAM <br/> LABS</p>
                             </Grid>
                             <Grid item lg={7}>
                                 <Button onClick={() => {
@@ -153,12 +155,15 @@ const Frame1=()=>{
                     {/* Eaie */}
                     <Grid  item md={8}  xs={11} style={{marginTop:80}} >
                         <Paper elevation={5} style={isPortrait?{ padding:20,borderRadius:25}:{ padding:5,borderRadius:25}}>
-                            <Grid container justify={!isPortrait?'space-evenly':''} alignItems={'center'}>
-                                <Grid item md={2}>
-                                    <img src={eaie} alt=""/>
+                            <Grid container justify={!isPortrait?'center':''} alignItems={'center'} >
+                                <Grid item md={1} >
+                                    <img src={logo} height={50} alt="" style={{marginLeft:40}}/>
                                 </Grid>
-                                <Grid item md={8}>
-                                    <p id={'kalam'} style={{color:'#8373A5',fontSize:'15px'}}>Kalam Labs is representing Asia in the International Education Summit, Helsinki. We need your vote to make India proud & lead Ed-Tech revolution. Voting ends in 02:34 M</p>
+                                <Grid item md={10}>
+                                    <p id={'kalam'} style={{color:'#8373A5',fontSize:'15px'}}> Kalam labs has Won the International Education Innovation Award by Finland Government. Out of 1400 entries, Elixar System’s Kalam Labs has won the Global Title. </p>
+                                </Grid>
+                                <Grid item md={1}>
+                                    <img src={medal} height={50} alt=""/>
                                 </Grid>
 
                             </Grid>
@@ -183,12 +188,12 @@ const Frame1=()=>{
 
                     <Grid item container justify={'center'} style={{marginTop:100}} sm={6} md={11} lg={7}>
                         <Grid item className={'warrior'}  xs={11} md={3} lg={5}>
-                            {show?<div className={'float'}><ExplorerShort/></div>:<div id={'explorer'}><Explorer /></div>}
+                            {show?<div className={'float'} style={{zIndex:2}} ><ExplorerShort/></div>:<div id={'explorer'}><Explorer /></div>}
 
 
                         </Grid>
                         <Grid item className={'warrior'}  xs={10} md={3} lg={5}>
-                            {show?<div className={'dfloat'}><ConquererShort/></div>:<div id={'explorer'}>{isPortrait?<div></div>:<Conquerer/>}</div>}
+                            {show&&!isPortrait?<div className={'dfloat'} style={{zIndex:2}}><ConquererShort /></div>:<div id={'explorer'}>{isPortrait?<div></div>:<Conquerer/>}</div>}
                         </Grid>
                     </Grid>
                 </Grid>

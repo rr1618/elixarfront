@@ -11,6 +11,11 @@ export default class API {
         let res =await axios.create({baseURL: base}).post("api/register/", body);
         return res
     }
+    static async bookTrial(body) {
+        console.log("register contents",body)
+        let res =await axios.create({baseURL: base}).post("api/booktrial/", body);
+        return res
+    }
     static async verifySignature(body) {
         console.log("register contents",body)
         let res =await axios.create({baseURL: base}).post("api/verify_signature/", body);

@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useContext, useEffect} from "react";
 import Aos from "aos";
 import "aos/dist/aos.css"
 import explorer from '../assets/explorer.png'
@@ -53,7 +53,7 @@ const Explorer = () => {
                         </Grid>
                     </Grid>
                     <Grid item xs={12}>
-                        <Link to={'/checkout'} style={{textDecoration: 'none'}}>
+                        <Link to={'/checkout/buycourse'} style={{textDecoration: 'none'}}>
                             <Button variant={'contained'} style={{backgroundColor: '#19C8FF', width: '100%'}}>
                                 <Grid container justify={'space-between'} style={{color: 'white', padding: 10}}>
                                     <Grid item style={{fontSize: '.9em'}}>
@@ -73,8 +73,10 @@ const Explorer = () => {
     )
 }
 const Conquerer = () => {
+
     useEffect(() => {
         Aos.init({duration: 1000})
+
     }, [])
     return (<div
         data-aos="slide-up"
@@ -98,15 +100,19 @@ const Conquerer = () => {
                     </ul>
                 </Grid>
                 <Grid item>
-                    <Button variant={'contained'}
+                   <Link to={'/checkout/trial'}>
+                       <Button variant={'contained'}
 
-                            style={{
-                                backgroundColor: '#19C8FF',
-                                borderRadius: 20,
-                                color: 'white',
-                                marginBottom: 20,
-                                marginTop: 30
-                            }}> Coming Soon..</Button>
+                               style={{
+                                   backgroundColor: '#19C8FF',
+                                   borderRadius: 20,
+                                   color: 'white',
+                                   marginBottom: 20,
+                                   marginTop: 30
+
+                               }}
+                              > Book A free Trial</Button>
+                   </Link>
                 </Grid>
 
             </Grid>
@@ -131,7 +137,7 @@ const ExplorerShort = () => {
 
                 </Grid>
                 <Grid item lg={10}>
-                    <Link to={'/checkout'} style={{textDecoration: 'none', color: 'white'}}><p>Science Explorer <br/>
+                    <Link to={'/checkout/buycourse'} style={{textDecoration: 'none', color: 'white'}}><p>Science Explorer <br/>
                         <span
                             style={{color: '#A3E9FF', fontSize: '.7em'}}>Course for class 8th to 10th</span></p></Link>
                 </Grid>
@@ -154,7 +160,7 @@ const ConquererShort = () => {
                     <img src={conquererShort} style={{height: 70, width: 60}} alt=""/>
                 </Grid>
                 <Grid item lg={10}>
-                    <Link to={'/checkout'} style={{textDecoration: 'none', color: 'white'}}><p>Engineering
+                    <Link to={'/checkout/trial'} style={{textDecoration: 'none', color: 'white'}}><p>Engineering
                         Conquerer <br/> <span
                             style={{color: '#A3E9FF', fontSize: '.7em'}}>Course for class 11th to 12th</span></p></Link>
                 </Grid>

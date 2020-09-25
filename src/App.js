@@ -12,9 +12,11 @@ export const FormSelectContext = createContext(null)
 export const RegisterContext = createContext(null)
 export const OtpContext = createContext(null)
 export const SpinnerContext = createContext(null)
+export const BookFreeContext = createContext(null)
 
 function App() {
     const [form,setForm] = useState(0)
+    const [book,setBook] = useState(false)
     const [register,setRegister] = useState({
         name:'',
         mobile:'',
@@ -34,7 +36,7 @@ function App() {
       <React.Fragment>
           <Router>
               <Switch>
-
+                    <BookFreeContext.Provider value={{book,setBook}}>
                   <FormSelectContext.Provider value={{form,setForm}}>
                   <RegisterContext.Provider value={{register,setRegister}}>
                   <OtpContext.Provider value={{otpContent,setOtpContent}}>
@@ -48,13 +50,15 @@ function App() {
 
                       </Grid>}>
                             <Route exact path={'/'} component={Home}/>
-                            <Route exact path={'/checkout'} component={PreCheckout}/>
+                            <Route exact path={'/checkout/:trial'} component={PreCheckout}/>
+                            {/*<Route exact path={'/booktrial'} component={PreCheckout}/>*/}
                          <Route exact path={'/paymentstatus/:orderId'} component={PaymentSuccess}/>
                       </Suspense>
                   </SpinnerContext.Provider>
                   </OtpContext.Provider>
                   </RegisterContext.Provider>
                   </FormSelectContext.Provider>
+                    </BookFreeContext.Provider>
               </Switch>
           </Router>
       </React.Fragment>

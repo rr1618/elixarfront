@@ -18,6 +18,7 @@ import paytm from '../assets/s2.svg'
 import rupay from '../assets/s3.svg'
 import Aos from "aos";
 import "aos/dist/aos.css"
+import logo from '../assets/logo.png'
 
 const About = () => {
     useEffect(() => {
@@ -99,8 +100,13 @@ const About = () => {
             </Grid>
 
             <Grid item container className={'footer'} style={{backgroundColor: '#15111F', padding: 10}} justify={'center'}>
-                <Grid item xs={12} md={3}>
-                    <p style={{fontWeight:'bolder'}}>KALAM <br/> LABS</p>
+                <Grid item container xs={12} md={3} style={{marginLeft:60}}  >
+                    <Grid item>
+                        <img src={logo}  style={{height:40,marginTop:15}} alt=""/>
+                    </Grid>
+                    <Grid item>
+                        <p style={{color:'white',fontWeight:'bolder'}}>KALAM <br/>LABS</p>
+                    </Grid>
                 </Grid>
                 <Grid item xs={12} md={3}>
                     <p >Contact us <br/><small style={{color:'#8373A5'}}>Email: kalam-labs@elixarsystems.com <br/>Phone: +91 9897676787</small></p>
