@@ -156,10 +156,15 @@ const Form2 = () => {
     const [otp, setOtp] = useState("")
     const {spin,setSpin} = useContext(SpinnerContext)
     const handlesubmit = (ootp) => {
-
+        setSpin(true)
         API.verifyOtp({sessionId: otpContent, otp: otp}).then(res => {
+            setSpin(false)
             setForm(2)
-        }).catch(error => alert("wrong otp"))
+        }).catch(error => {
+            setSpin(false)
+            alert("wrong otp")
+
+        })
     }
     useEffect(() => {
 
@@ -243,7 +248,7 @@ const Form3 = () => {
                 setSpin(false)
                 alert("Problem fetching order Id")
             })
-            if(trial=='booktrial')
+            if(trial=='trial')
                 API.bookTrial({register}).then(
                     res=> {
                         setSpin(false)
