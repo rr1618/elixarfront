@@ -1,4 +1,4 @@
-import hardware from "../assets/hardware.png";
+import hardware from "../assets/2.jpg";
 import Grid from "@material-ui/core/Grid";
 import React, {useEffect} from "react";
 import Aos from "aos";

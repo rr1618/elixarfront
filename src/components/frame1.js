@@ -3,9 +3,9 @@ import Aos from "aos";
 import "aos/dist/aos.css"
 import {useMediaQuery} from "react-responsive";
 import Grid from "@material-ui/core/Grid";
-import frame1 from "../assets/frame1.png";
+import frame1 from "../assets/1.jpg";
 import Paper from "@material-ui/core/Paper";
-import eaie from "../assets/eaie.png";
+
 import Button from "@material-ui/core/Button";
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import MenuIcon from '@material-ui/icons/Menu';
