@@ -126,6 +126,7 @@ const Explorer = () => {
                     vertical: 'center',
                     horizontal: 'left',
                 }}
+                style={!isPortrait?{width:'90vw'}:{}}
             >
 
                 <Popup/>

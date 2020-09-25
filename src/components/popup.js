@@ -6,6 +6,7 @@ import StarIcon from '@material-ui/icons/Star';
 import StarHalfIcon from '@material-ui/icons/StarHalf';
 import Logo from "../assets/kalamLogo.png";
 import capture from '../assets/capture.png'
+import CloseIcon from '@material-ui/icons/Close';
 import {useMediaQuery} from "react-responsive";
 import teach from '../assets/popupteach.png'
 import partner from '../assets/partner.png'
