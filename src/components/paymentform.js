@@ -407,9 +407,12 @@ const Form4 = () => {
                         payment_amount:'799',
                         signature:response.razorpay_signature,}).then(res => {
                             API.sendMail({name:register.name,email:register.email,amount:'799',order_id:response.razorpay_order_id}).
-                                then(res=>alert('A confirmation mail has been sent on '+register.email)).
+                                then(res=> {
+                                alert('A confirmation mail has been sent on ' + register.email)
+                                window.location.href=`https://kalamlabs.netlify.app/paymentstatus/${response.razorpay_order_id}`
+                            }).
                                 catch(err=>{alert('Problem sending mail and processing payment')})
-                        window.location.href=`https://kalamlabs.netlify.app/paymentstatus/${response.razorpay_order_id}`
+
                     }).catch(
                         error => {
                             alert("Mobile Number Already registered")
