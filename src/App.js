@@ -3,7 +3,9 @@ import './App.css';
 import PaymentSuccess from "./components/paymentstatus";
 import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import Slide from "./components/slider";
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom'
+// import Carousel from "./components/slider";
 const  Home = React.lazy(()=>import("./components/home"));
 const  PreCheckout = React.lazy(()=>import("./components/precheckout"));
 export const FormSelectContext = createContext(null)
@@ -15,6 +17,7 @@ export const BookFreeContext = createContext(null)
 function App() {
     const [form,setForm] = useState(0)
     const [book,setBook] = useState(false)
+    var items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
     const [register,setRegister] = useState({
         name:'',
@@ -48,7 +51,10 @@ function App() {
                           </Grid>
 
                       </Grid>}>
-                            <Route exact path={'/'} component={Home}/>
+                          <Route exact path={'/'} component={Home} />
+                              {/*<Slide />*/}
+                          {/*</Route>*/}
+
                             <Route exact path={'/checkout/:trial'} component={PreCheckout}/>
                             {/*<Route exact path={'/booktrial'} component={PreCheckout}/>*/}
                          <Route exact path={'/paymentstatus/:orderId'} component={PaymentSuccess}/>

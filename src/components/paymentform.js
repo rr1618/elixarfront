@@ -3,6 +3,7 @@ import 'date-fns';
 import "aos/dist/aos.css"
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
+import razorlogo from '../assets/razorlogo.jpg'
 import Paper from '@material-ui/core/Paper';
 import OtpInput from 'react-otp-input';
 import {FormSelectContext,  OtpContext, RegisterContext,SpinnerContext} from "../App";
@@ -150,6 +151,7 @@ const Form1 = () => {
     </React.Fragment>)
 }
 const Form2 = () => {
+    const {trial} = useParams()
     const {form, setForm} = useContext(FormSelectContext)
     const {otpContent, setOtpContent} = useContext(OtpContext)
     const {register, setRegister} = useContext(RegisterContext)
@@ -158,8 +160,21 @@ const Form2 = () => {
     const handlesubmit = (ootp) => {
         setSpin(true)
         API.verifyOtp({sessionId: otpContent, otp: otp}).then(res => {
-            setSpin(false)
-            setForm(2)
+            if(trial=='buycourse')
+                API.getOrderId({name:register.name,amount:'79900'}).then(
+                    res=> {
+                        setRegister({...register,order_id:res.data['order_id']})
+                        setSpin(false)
+                        setForm(3)
+                    }).catch(error=>{
+                    setSpin(false)
+                    alert("Problem fetching order Id")
+                })
+            else{
+                setSpin(false)
+                setForm(2)
+            }
+
         }).catch(error => {
             setSpin(false)
             alert("wrong otp")
@@ -376,12 +391,12 @@ const Form4 = () => {
     },[register])
 
     var options = {
-        "key": "rzp_test_L3hv3powYQMGQn",
-        "amount": "50000",
+        "key": "rzp_live_0RdkjhtdlQnks7",
+        "amount": "79900",
         "currency": "INR",
         "name": "Elixir Systems",
-        "description": "Test Transaction",
-        "image": "https://example.com/your_logo",
+        "description": "Kalam Labs Registration",
+        "image": {razorlogo},
         "order_id": register.order_id,
         "handler": function (response){
             API.verifySignature({order_id:response.razorpay_order_id,payment_id:response.razorpay_payment_id,signature:response.razorpay_signature}).then(
@@ -416,7 +431,7 @@ const Form4 = () => {
             "address": "Elixir System Office"
         },
         "theme": {
-            "color": "#F37254"
+            "color": "#2A2A2A"
         }
     };
     var rzp1 = new window.Razorpay(options);

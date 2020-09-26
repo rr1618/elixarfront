@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useContext, useEffect} from "react";
+import {FormSelectContext,RegisterContext} from "../App";
 import {
     Link,
     Element,
@@ -11,6 +12,21 @@ import Frame5 from "./frame5";
 import About from "./about";
 const Home = () =>
 {
+    const {form,setForm} =useContext(FormSelectContext)
+    const {register,setRegister} = useContext(RegisterContext)
+    useEffect(()=>{
+        setRegister({...register,
+            name:'',
+            mobile:'',
+            school:'',
+            email:'',
+            date:'',
+            slot:'',
+            order_id:'',
+            payment:false
+        })
+        setForm(0)
+    },[])
     return(
         <React.Fragment>
             <Element

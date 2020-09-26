@@ -1,15 +1,40 @@
 import { TextField } from '@material-ui/core';
 import Grid from "@material-ui/core/Grid";
+import MediaCard from "./card";
 import Paper from "@material-ui/core/Paper";
 import conquerer from "../assets/conquerer.png";
 import kalamcollage from '../assets/collage.png'
 import Button from '@material-ui/core/Button';
+import Carousel from 'react-material-ui-carousel'
+import {useMediaQuery} from "react-responsive";
 import React, {useEffect} from "react";
 import Aos from "aos";
+import hod from '../assets/hod.jpg'
+import Slide from "./slider";
 import "aos/dist/aos.css"
+import faraz from "../assets/faraz.png";
+import sasakt from "../assets/sasakt.jpg";
+import harshit from '../assets/harshit.jpg'
 
-
+var items = [
+    {
+        img: faraz,
+        name:'Faraz Ahmad',
+        description: "Co-Founder"
+    },
+    {
+        img: sasakt,
+        name:'Shasakt Tripathi',
+        description: "Co-Founder"
+    },
+    {
+        img: harshit,
+        name:'Harshit  Awasthi',
+        description: "Co-Founder"
+    }
+]
 const Frame5=()=>{
+    const isPortrait = useMediaQuery({ query: '(orientation: portrait)' })
     useEffect(() => {
 
         Aos.init({duration: 1000,
@@ -39,7 +64,7 @@ const Frame5=()=>{
                 <Paper elevation={5} id={'anuradha'}  >
 
                     <Grid container>
-                        <Grid item lg={8}>
+                        <Grid item lg={6}>
                             <div
                                 data-aos={'fade-in'}
                                 data-aos-delay="100"
@@ -48,14 +73,37 @@ const Frame5=()=>{
                             <p>Mrs Anuradha Madhur is one of the most celebrated <br/> Physisicts in India. She has been core authors of Physics <br/>NCERT Textbooks of Class 11th and 12th. She has <br/>previously taught at Harvard University, USA and ex- HOD<br/> Physics NCERT.<br/> <br/>At Kalam Labs, she guides students across Globe to Study<br/> Science Experimentally.</p>
                             </div>
                         </Grid>
-                        <Grid item lg={4}>
-                            <img src={conquerer} height={30} alt=""/>
+                        <Grid item lg={6}>
+                            {isPortrait? <img src={hod} height={200}  alt=""/>:<img src={hod} style={{height:200}}  alt=""/>}
+
                         </Grid>
                     </Grid>
 
                 </Paper>
 
             </Grid>
+            {isPortrait?<Grid justify={'center'} container xs={12} style={{margin:10}}>
+                <Grid item >
+                    <Carousel>
+                        {
+                            items.map( (item, i) => <MediaCard key={i} name={item.name} img={item.img} descriptioin={item.description}/> )
+                        }
+                    </Carousel>
+                </Grid>
+            </Grid>:<Grid item container xs={12} justify={'space-evenly'} style={{margin:10}}>
+                <Grid item>
+                    <MediaCard name={'Harshit Awasthi'} img={harshit} description={'Co-founder'}/>
+                </Grid>
+                <Grid item>
+                    <MediaCard name={'Faraz Ahmad'} img={faraz} description={'Co-founder'}/>
+                </Grid><Grid item>
+                <MediaCard name={'Shasakt Tripathi'} img={sasakt} description={'Co-founder'}/>
+            </Grid>
+
+
+            </Grid>}
+
+
             <Grid item container justify={'center'} style={{padding:0}}>
                 <Grid item >
                     <img src={kalamcollage} style={{width:'100%'}} alt=""/>

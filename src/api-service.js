@@ -34,7 +34,7 @@ export default class API {
     }
 
     static async sendOtp(body) {
-        let res =await axios.create({baseURL: otpBaseUrl}).get(`${apikey}/${sms}/${body}/AUTOGEN`);
+        let res =await axios.create({baseURL: otpBaseUrl}).get(`${apikey}/${sms}/${body}/AUTOGEN/Kalam Labs OTP`);
         return res
     }
     static async getOrderId(body) {
