@@ -253,9 +253,10 @@ const Form3 = () => {
                     res=> {
                         setSpin(false)
                         alert('Response Saved')
+                        window.location.href='https://kalamlabs.netlify.app/'
                     }).catch(error=>{
                     setSpin(false)
-                    alert("Problem saving response")
+                    alert("Response already exists")
                 })
 
 

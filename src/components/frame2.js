@@ -2,13 +2,15 @@ import Grid from "@material-ui/core/Grid";
 import React, {useEffect} from "react";
 import Aos from "aos";
 import "aos/dist/aos.css"
+import frame1 from "../assets/1.jpg";
+import mountain from '../assets/mountain.png'
 
 const Frame2 = ()=>{
     useEffect(() => {
         Aos.init({duration: 1000})
     }, [])
     return(
-        <Grid container style={{height:'min-content',backgroundColor:'#F4F4F4',}} justify={'center'} alignItems={'center'}>
+        <Grid container style={{height:'min-content',backgroundColor:'#F4F4F4',backgroundImage: "url("+`${mountain}`+")"}} justify={'center'} alignItems={'center'}>
             <Grid item style={{marginTop:'70vh'}} xs={11}>
                 <div
                     data-aos={'fade-up'}

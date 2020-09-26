@@ -2,10 +2,10 @@ import axios from "axios";
 
 const base="https://elixar.herokuapp.com/"
 // const base=" http://127.0.0.1:8000/"
-const apikey = '8fdef991-fced-11ea-9fa5-0200cd936042'
+const apikey = 'f8753847-ffd5-11ea-9fa5-0200cd936042'
 const otpBaseUrl = 'https://2factor.in/API/V1/'
-// const sms = 'SMS'
-const sms = 'VOICE'
+const sms = 'SMS'
+// const sms = 'VOICE'
 export default class API {
     static async register(body) {
 
@@ -13,7 +13,7 @@ export default class API {
         return res
     }
     static async bookTrial(body) {
-
+        console.log('trial',body)
         let res =await axios.create({baseURL: base}).post("api/booktrial/", body);
         return res
     }
