@@ -1,12 +1,9 @@
 import React, {createContext, useState, Suspense, useEffect} from 'react';
 import './App.css';
 import PaymentSuccess from "./components/paymentstatus";
-import Popup from './components/popup'
 import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom'
-import Nav from "./components/navbar";
-import {useMediaQuery} from "react-responsive";
 const  Home = React.lazy(()=>import("./components/home"));
 const  PreCheckout = React.lazy(()=>import("./components/precheckout"));
 export const FormSelectContext = createContext(null)

@@ -1,6 +1,7 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import Grid from "@material-ui/core/Grid";
 import './about.css'
+import API from "../api-service";
 import {useMediaQuery} from "react-responsive";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
@@ -23,12 +24,13 @@ import logo from '../assets/logo.png'
 
 const About = () => {
     const isPortrait = useMediaQuery({ query: '(orientation: portrait)' })
+    const [email,setEmail] = useState('')
     useEffect(() => {
 
         Aos.init({duration: 1000,
             // disable:'mobile'
         })
-    }, [])
+    }, [email])
     return (
         <Grid container className={'about'}>
             <Grid item container justify={'center'} style={{padding: 8}}>
@@ -85,7 +87,10 @@ const About = () => {
                             paddingLeft: 30,
                             marginTop:10,
                             outline:'none'
-                        }} placeholder={'Your Email address'}/>
+                        }} placeholder={'Your Email address'}
+                               onInput={(e)=>setEmail(e.target.value)}
+                               value={email}
+                        />
 
                     </Grid>
                     <Grid item>
@@ -95,7 +100,8 @@ const About = () => {
                             paddingRight: 20,
                             paddingLeft: 20,
                             borderRadius: 20
-                        }}>Submit</Button>
+                        }}
+                        onClick={()=>API.getInTouch({email:email}).then(res=>alert('response saved')).catch(err=>alert('please enter a valid email'))}>Submit</Button>
                     </Grid>
                 </Grid>
 

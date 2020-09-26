@@ -388,9 +388,11 @@ const Form4 = () => {
                     API.register({...register,order_id:response.razorpay_order_id,
                         payment_id:response.razorpay_payment_id,
                         payment:true,
-                        payment_amount:'500',
+                        payment_amount:'799',
                         signature:response.razorpay_signature,}).then(res => {
-                        alert("Payment Made")
+                            API.sendMail({name:register.name,email:register.email,amount:'799',order_id:response.razorpay_order_id}).
+                                then(res=>alert('A confirmation mail has been sent on '+register.email)).
+                                catch(err=>{alert('Problem sending mail and processing payment')})
                         window.location.href=`https://kalamlabs.netlify.app/paymentstatus/${response.razorpay_order_id}`
                     }).catch(
                         error => {
