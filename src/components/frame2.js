@@ -13,7 +13,7 @@ const Frame2 = ()=>{
     }, [])
     return(
         <Grid container style={isPortrait?{height:'min-content',backgroundColor:'#F4F4F4',backgroundImage: "url("+`${mountain}`+")"}:{height:'100vh',backgroundColor:'#F4F4F4',backgroundImage: "url("+`${mountain}`+")"}} justify={'center'} alignItems={'center'}>
-            <Grid item style={{marginTop:'40vh'}} xs={11}>
+            <Grid item style={isPortrait?{marginTop:'60vh'}:{marginTop:'40vh'}} xs={11}>
                 <div
                     data-aos={'fade-up'}
                 >

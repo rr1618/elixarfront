@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext, useEffect, useState} from "react";
 import "aos/dist/aos.css"
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -14,18 +14,33 @@ import partnermobile from '../assets/partnermobile.png'
 import teachmobile from '../assets/popupteachmobile.png'
 import capturemobile from '../assets/capturemobile.png'
 import 'fontsource-roboto';
-
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
+import {PopupContext} from '../App'
 const Popup =()=>{
+    const {anchorEl, setAnchorEl} =useContext(PopupContext);
+    useEffect(()=>{
+
+    },[anchorEl])
     const isPortrait = useMediaQuery({ query: '(orientation: portrait)' })
+
+
+    const handleClose = () => {
+        console.log("clicked")
+        setAnchorEl(null);
+    };
     return(
         <Grid container justify={'center'} className={'popup'}  >
             <Grid item container md={6} xs={12} justify={'flex-start'} >
+                <Grid item>
+                    <HighlightOffIcon onClick={handleClose}/>
+                </Grid>
                 <Grid item>
                     <Paper elevation={1} style={{padding:'0px 15px 0px 15px',borderRadius:10}}>
                         <p style={{fontWeight:'lighter',fontSize:'3em'}}> Scientific Explorer <br/><span style={{color:"#FFA800",fontSize:'.5em'}}><StarIcon /><StarIcon/><StarIcon/><StarIcon/><StarHalfIcon/> <span >4.8</span> <span style={{color:"black",marginLeft:10}}>471 Ratings</span></span></p>
 
                     </Paper>
                 </Grid>
+
                 <Grid item xs={12}></Grid>
                 <Grid item>
                     <Paper elevation={5} style={{borderRadius:20,marginBottom:10}}>

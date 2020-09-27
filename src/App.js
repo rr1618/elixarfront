@@ -13,6 +13,7 @@ export const RegisterContext = createContext(null)
 export const OtpContext = createContext(null)
 export const SpinnerContext = createContext(null)
 export const BookFreeContext = createContext(null)
+export const PopupContext = createContext(null)
 
 function App() {
     const [form,setForm] = useState(0)
@@ -30,6 +31,7 @@ function App() {
         payment:false
     })
     const [otpContent,setOtpContent] = useState(null)
+    const [anchorEl, setAnchorEl] = useState(null);
     const [spin,setSpin] = useState(false)
     useEffect(()=>{
 
@@ -38,6 +40,7 @@ function App() {
       <React.Fragment>
           <Router>
               <Switch>
+                  <PopupContext.Provider value={{anchorEl, setAnchorEl}}>
                     <BookFreeContext.Provider value={{book,setBook}}>
                   <FormSelectContext.Provider value={{form,setForm}}>
                   <RegisterContext.Provider value={{register,setRegister}}>
@@ -64,6 +67,7 @@ function App() {
                   </RegisterContext.Provider>
                   </FormSelectContext.Provider>
                     </BookFreeContext.Provider>
+                  </PopupContext.Provider>
               </Switch>
           </Router>
       </React.Fragment>

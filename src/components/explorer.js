@@ -1,4 +1,4 @@
-import React, { useEffect} from "react";
+import React, {useContext, useEffect} from "react";
 import Aos from "aos";
 import "aos/dist/aos.css"
 import { makeStyles } from '@material-ui/core/styles';
@@ -7,6 +7,8 @@ import Popup from "./popup";
 import explorer from '../assets/explorer.png'
 import Paper from '@material-ui/core/Paper';
 import {useMediaQuery} from "react-responsive";
+import {PopupContext} from "../App";
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import conquerer from "../assets/conquerer.png";
@@ -19,10 +21,13 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Explorer = () => {
+const Explorer = (props) => {
+    useEffect(()=>{
+
+    },[])
     const isPortrait = useMediaQuery({ query: '(orientation: portrait)' })
     const classes = useStyles();
-    const [anchorEl, setAnchorEl] = React.useState(null);
+    const {anchorEl, setAnchorEl} = useContext(PopupContext);
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -42,6 +47,9 @@ const Explorer = () => {
         {isPortrait?<div
 
         >
+            <div>
+
+            </div>
             <Popover
                 id={id}
                 open={open}
@@ -152,7 +160,7 @@ const Explorer = () => {
                         <Grid item>
                             <h3 style={{color: 'white'}}>Rs. 799 <br/> <span
                                 style={{color: 'white', fontSize: '.5em', marginLeft: 20}}>
-                                                    Price per Class Rs. 120
+                                                    Price per Class Rs. 100
                                                 </span></h3>
 
                         </Grid>
