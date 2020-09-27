@@ -169,7 +169,8 @@ li:nth-child(6){
 }
 #withau{
   color: white;
-  font-family: -apple-system;
+  font-size: 20px;
+  font-family:Roboto;
   padding: 10px;
   text-align: center;
 }
@@ -208,8 +209,9 @@ li:nth-child(6){
 }
 #anuradha{
   text-align: center;
-  padding: 30px;
+  padding: 5px;
   background-color: #F4F4F4;
+  margin-bottom: 60px;
 }
 #anuradha  p:nth-child(1){
   font-weight: bold;
@@ -379,7 +381,7 @@ and (max-width: 650px) {
   }
   #withau{
     color: white;
-    font-family: -apple-system;
+    font-family: Roboto;
     padding: 10px;
   }
   #kalam{

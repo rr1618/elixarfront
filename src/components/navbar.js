@@ -89,20 +89,7 @@ const Nav = ()=>
                             <p>About</p>
                         </Link>
                     </Grid>
-                    <Grid item md={3}>
-                        <Link
-                            to="trial"
-                            spy={true}
-                            hashSpy={true}
-                            smooth={true}
-                            duration={1000}
-                            offset={50}
 
-
-                        >
-                            <p>Book A Free AR Trail</p>
-                        </Link>
-                    </Grid>
                 </Grid>
                 <Grid item></Grid>
 

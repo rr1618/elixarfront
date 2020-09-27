@@ -4,6 +4,7 @@ import "aos/dist/aos.css"
 import {useMediaQuery} from "react-responsive";
 import Grid from "@material-ui/core/Grid";
 import frame1 from "../assets/1.jpg";
+import frame1mobile from "../assets/1mobile.jpg";
 import Paper from "@material-ui/core/Paper";
 
 import Button from "@material-ui/core/Button";
@@ -44,7 +45,7 @@ const Frame1=()=>{
 
     },[])
     return(
-            <Grid container  className={'container1'} style={{backgroundImage: "url("+`${frame1}`+")",}} justify="center"  alignItems={'center'}  >
+            <Grid container  className={'container1'} style={isPortrait?{backgroundImage: "url("+`${frame1mobile}`+")",}:{backgroundImage: "url("+`${frame1}`+")",}} justify="center"  alignItems={'center'}  >
                 <Grid className={'overlay'}   item container justify={'center'}>
                     {!isPortrait?<Nav/>:<div style={{width:'100%'}} >
                         <Grid   container
@@ -133,37 +134,6 @@ const Frame1=()=>{
                                         People
                                     </Link>
                                 </Grid>
-                                <Grid item>
-                                    <Link
-                                        to="about"
-                                        spy={true}
-                                        hashSpy={true}
-                                        smooth={true}
-                                        offset={-60}
-                                        duration={500}
-                                        style={{padding: 10}}
-                                        onClick={() => {
-                                            setDrawer(false)
-                                        }}
-                                    >
-                                        About
-                                    </Link>
-                                </Grid>
-                                {/*<Grid item>*/}
-                                {/*    <Link*/}
-                                {/*        to="contact"*/}
-                                {/*        spy={true}*/}
-                                {/*        hashSpy={true}*/}
-                                {/*        smooth={true}*/}
-                                {/*        duration={500}*/}
-                                {/*        style={{padding: 10}}*/}
-                                {/*        onClick={() => {*/}
-                                {/*            setDrawer(false)*/}
-                                {/*        }}*/}
-                                {/*    >*/}
-                                {/*        Contact Us*/}
-                                {/*    </Link>*/}
-                                {/*</Grid>*/}
 
                             </Grid>
                         </SwipeableDrawer>

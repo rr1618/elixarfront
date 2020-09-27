@@ -2,12 +2,15 @@ import React, {useContext, useEffect, useState} from "react";
 import 'date-fns';
 import "aos/dist/aos.css"
 import Grid from '@material-ui/core/Grid';
+import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
 import razorlogo from '../assets/razorlogo.jpg'
 import Paper from '@material-ui/core/Paper';
 import OtpInput from 'react-otp-input';
 import {FormSelectContext,  OtpContext, RegisterContext,SpinnerContext} from "../App";
 import Aos from "aos";
+import MenuItem from '@material-ui/core/MenuItem';
+import NativeSelect from '@material-ui/core/NativeSelect';
 import API from "../api-service";
 import {
     useParams
@@ -16,9 +19,19 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import {FormHelperText, TextField} from '@material-ui/core';
 import {TextValidator, ValidatorForm} from "react-material-ui-form-validator";
 
-
+const currencies = [
+    {
+        value: '+91',
+        label: '+91',
+    },
+    {
+        value: '+1',
+        label: '+1',
+    },
+];
 const Form1 = () => {
     const {trial}  =useParams()
+    const [currency, setCurrency] = React.useState('+91');
     const [text,setText] = useState('Buy now')
     const {form, setForm} = useContext(FormSelectContext)
     const {spin,setSpin} = useContext(SpinnerContext)
@@ -30,6 +43,9 @@ const Form1 = () => {
             setText('Book A Free Trial')
     }, [register,spin,trial])
 
+    const handleChange = (event) => {
+        setCurrency(event.target.value);
+    };
     const handleSubmit = () => {
         setSpin(true)
             API.sendOtp(register.mobile).then(res => {
@@ -114,9 +130,24 @@ const Form1 = () => {
                                             errorMessages={["this field is required", "email is not valid"]}
                                         />
                                     </Grid>
-                                    <Grid item xs={10}>
-                                        <FormHelperText className={'helper'} id="my-helper-text">Accessible phone number for
-                                            verification</FormHelperText>
+                                    <Grid item xs={12}></Grid>
+                                    <Grid item xs={2} style={{marginTop:45}}>
+                                        <TextField
+                                            id="standard-select-currency"
+                                            select
+                                            value={currency}
+                                            onChange={handleChange}
+                                            // helperText="Please select your currency"
+                                        >
+                                            {currencies.map((option) => (
+                                                <MenuItem key={option.value} value={option.value}>
+                                                    {option.label}
+                                                </MenuItem>
+                                            ))}
+                                        </TextField>
+                                    </Grid>
+                                    <Grid item xs={8}>
+                                        <FormHelperText className={'helper'} id="my-helper-text">Mobile Number</FormHelperText>
                                         <TextValidator
                                             className={'input'}
                                             label="Mobile"
@@ -130,6 +161,7 @@ const Form1 = () => {
                                             value={register.mobile}
                                             validators={["required"]}
                                             errorMessages={["this field is required"]}
+
                                         />
                                     </Grid>
                                     <Grid item xs={12} style={{paddingTop: 10, paddingBottom: 30}}>
@@ -385,6 +417,7 @@ const Form3 = () => {
 }
 const Form4 = () => {
     const {register, setRegister} = useContext(RegisterContext)
+    const {spin,setSpin} = useContext(SpinnerContext)
 
     useEffect(()=>{
 
@@ -399,6 +432,7 @@ const Form4 = () => {
         "image": {razorlogo},
         "order_id": register.order_id,
         "handler": function (response){
+            setSpin(true)
             API.verifySignature({order_id:response.razorpay_order_id,payment_id:response.razorpay_payment_id,signature:response.razorpay_signature}).then(
                 res=>{
                     API.register({...register,order_id:response.razorpay_order_id,
@@ -408,13 +442,18 @@ const Form4 = () => {
                         signature:response.razorpay_signature,}).then(res => {
                             API.sendMail({name:register.name,email:register.email,amount:'799',order_id:response.razorpay_order_id}).
                                 then(res=> {
+                                    setSpin(false)
                                 alert('A confirmation mail has been sent on ' + register.email)
                                 window.location.href=`https://kalamlabs.netlify.app/paymentstatus/${response.razorpay_order_id}`
                             }).
-                                catch(err=>{alert('Problem sending mail and processing payment')})
+                                catch(err=>{
+                                    setSpin(false)
+                                    alert('Problem sending mail and processing payment')
+                                })
 
                     }).catch(
                         error => {
+                            setSpin(false)
                             alert("Mobile Number Already registered")
                         }
                     )
@@ -486,13 +525,16 @@ const Form4 = () => {
                             </Grid>
 
                             <Grid item xs={10}>
-                                <Button variant={'contained'}
+                                <Button
+                                    endIcon={spin&&<CircularProgress color="secondary" />}
+
+                                        variant={'contained'}
                                         fullWidth
                                         style={{backgroundColor: '#19c8ff', color: 'white', fontSize: 12,margin:'0 0 20px 0'}} onClick={(e) => {
                                     rzp1.open();
                                     e.preventDefault();
                                 }}>Pay
-                                    Securely <br/></Button>
+                                    Securely  <br/></Button>
 
                             </Grid>
                         </Grid>

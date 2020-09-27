@@ -63,7 +63,7 @@ const Frame5=()=>{
             <Grid item xs={12} lg={8} >
                 <Paper elevation={5} id={'anuradha'}  >
 
-                    <Grid container>
+                    <Grid container justify={'space-between'} >
                         <Grid item lg={6}>
                             <div
                                 data-aos={'fade-in'}
@@ -73,8 +73,8 @@ const Frame5=()=>{
                             <p>Mrs Anuradha Madhur is one of the most celebrated <br/> Physisicts in India. She has been core authors of Physics <br/>NCERT Textbooks of Class 11th and 12th. She has <br/>previously taught at Harvard University, USA and ex- HOD<br/> Physics NCERT.<br/> <br/>At Kalam Labs, she guides students across Globe to Study<br/> Science Experimentally.</p>
                             </div>
                         </Grid>
-                        <Grid item lg={6}>
-                            {isPortrait? <img src={hod} height={200}  alt=""/>:<img src={hod} style={{height:200}}  alt=""/>}
+                        <Grid item lg={5} >
+                            {isPortrait? <img src={hod} height={200}  alt=""/>:<img src={hod} style={{height:300,width:'100%'}}  alt=""/>}
 
                         </Grid>
                     </Grid>
@@ -82,7 +82,7 @@ const Frame5=()=>{
                 </Paper>
 
             </Grid>
-            {isPortrait?<Grid justify={'center'} container xs={12} style={{margin:10}}>
+            {isPortrait?<Grid justify={'center'} container xs={12} style={{margin:10,marginBottom:30}}>
                 <Grid item >
                     <Carousel>
                         {
@@ -90,7 +90,7 @@ const Frame5=()=>{
                         }
                     </Carousel>
                 </Grid>
-            </Grid>:<Grid item container xs={12} justify={'space-evenly'} style={{margin:10}}>
+            </Grid>:<Grid item container xs={12} justify={'space-evenly'} style={{margin:10,marginBottom:60}}>
                 <Grid item>
                     <MediaCard name={'Harshit Awasthi'} img={harshit} description={'Co-founder'}/>
                 </Grid>

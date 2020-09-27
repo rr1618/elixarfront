@@ -44,7 +44,7 @@ const About = () => {
                         data-aos={'fade-in'}
                         data-aos-delay="100"
                     >
-                    <p>
+                    <p style={{fontSize:20}}>
                         What if the line between your learning and the practicality didn’t exist? With Kalam labs
                         augmented reality, not only is that possible, it’s here. Our products transforms how you learn,
                         play, work, teach and connect with the world around you. It’s the perfect way to visualise
