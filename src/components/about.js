@@ -120,7 +120,7 @@ const About = () => {
                     </Grid>
                 </Grid>
                 <Grid item xs={12} md={3}>
-                    <p >Contact us <br/><small style={{color:'#8373A5'}}>Email: kalam-labs@elixarsystems.com <br/>Phone: +91 9897676787</small></p>
+                    <p >Contact us <br/><small style={{color:'#8373A5'}}>Email: kalam-labs@elixarsystems.com <br/>Phone:+91 9140658594 </small></p>
                 </Grid>
                 <Grid item xs={12} container md={3}>
 
