@@ -31,7 +31,7 @@ const Frame4=()=>{
                     data-aos-delay="100"
 
                 >
-                    <p id={'weteach'} style={{color:'white'}}>We teach Science through 21st Century tech.Books, Blackboards, and Videos are out-dated. Stop Making Kids learn through it.
+                    <p id={'weteach'} style={{color:'white'}}>We teach Science through 21st Century tech.Books, Blackboards, and Videos <br/> are out-dated. Stop Making Kids learn through it.
 
                         Our AR Courses lets you Experience Science projected in your Home
                     </p>
