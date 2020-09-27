@@ -38,7 +38,7 @@ export default function MediaCard(props) {
                 </CardContent>
             </CardActionArea>
             <CardActions>
-                <Button size="small" color="primary">
+                <Button size="small" href={props.linkedin} color="primary">
                     LinkedIn
                 </Button>
 

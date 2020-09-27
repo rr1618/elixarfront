@@ -426,7 +426,7 @@ and (max-width: 650px) {
     text-align: left;
   }
   .container{
-    height:200vh;
+    height:min-content;
   }
   .container1{
     padding-bottom: 700px;

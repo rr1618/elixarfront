@@ -20,17 +20,20 @@ var items = [
     {
         img: faraz,
         name:'Faraz Ahmad',
-        description: "Co-Founder"
+        description: "Co-Founder",
+        linkedin:'https://www.linkedin.com/in/ahmad-faraaz/'
     },
     {
         img: sasakt,
         name:'Shasakt Tripathi',
-        description: "Co-Founder"
+        description: "Co-Founder",
+        linkedin:'https://www.linkedin.com/in/ahmad-faraaz/'
     },
     {
         img: harshit,
         name:'Harshit  Awasthi',
-        description: "Co-Founder"
+        description: "Co-Founder",
+        linkedin:'https://www.linkedin.com/in/sashakt-tripathi/'
     }
 ]
 const Frame5=()=>{
@@ -92,12 +95,12 @@ const Frame5=()=>{
                 </Grid>
             </Grid>:<Grid item container xs={12} justify={'space-evenly'} style={{margin:10,marginBottom:60}}>
                 <Grid item>
-                    <MediaCard name={'Harshit Awasthi'} img={harshit} description={'Co-founder'}/>
+                    <MediaCard name={'Harshit Awasthi'} img={harshit} description={'Co-founder'} linkedin={'https://www.linkedin.com/in/harshit016/'}/>
                 </Grid>
                 <Grid item>
-                    <MediaCard name={'Faraz Ahmad'} img={faraz} description={'Co-founder'}/>
+                    <MediaCard name={'Faraz Ahmad'} img={faraz} description={'Co-founder'} linkedin={'https://www.linkedin.com/in/ahmad-faraaz/'}/>
                 </Grid><Grid item>
-                <MediaCard name={'Shasakt Tripathi'} img={sasakt} description={'Co-founder'}/>
+                <MediaCard name={'Shasakt Tripathi'} img={sasakt} description={'Co-founder'} linkedin={'https://www.linkedin.com/in/sashakt-tripathi/'}/>
             </Grid>
 
 
