@@ -146,7 +146,7 @@ const Frame1=()=>{
                                     <img src={logo} height={50} alt="" style={{marginLeft:15}}/>
                                 </Grid>
                                 <Grid item md={10}>
-                                    <p id={'kalam'} style={{color:'#8373A5',fontSize:'15px'}}> Kalam labs has Won the International Education Innovation Award by Finland Government. Out of 1400 entries, Elixar System’s Kalam Labs has won the Global Title. </p>
+                                    <p id={'kalam'} style={{color:'#8373A5',fontSize:'15px'}}>Kalam Labs Wins the World’s Best Education Innovation Award by Finland Govt.</p>
                                 </Grid>
                                 <Grid item xs={2} md={1}>
                                     <img src={medal} height={50} style={{marginLeft:15}} alt=""/>

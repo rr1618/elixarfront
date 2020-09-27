@@ -17,8 +17,9 @@ const Frame2 = ()=>{
                 <div
                     data-aos={'fade-up'}
                 >
-                    <p id={'ina'}>In a Scientific Studey Conducted by NCERT, the <br/>Students who taught with AR, achieved 50% more
-                        <br/> marks than who studied just through Books.</p>
+                    <p id={'ina'}>NCERT Study proves AR learning increases marks by 50% <br/>
+                        Our AR Courses Make Science Real and turn boring lessons imaginative
+                    </p>
                 </div>
                 <div
                     data-aos={'fade-up'}

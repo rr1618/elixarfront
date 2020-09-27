@@ -67,10 +67,9 @@ const Explorer = () => {
                     <Grid item xs={12}>
 
                         <ul>
-                            <li>For class 8th to 10th</li>
                             <li>Science Explorer</li>
-                            <li>An Augmented Reality based Practical <br/>
-                                Imagination Foundation Course
+                            <li>For class 1th to 10th</li>
+                            <li>World’s First AR-based Science Course
                             </li>
                             <li>2 Weeks Course</li>
                             <li onClick={handleClick}>2 View Detailed Curriculum</li>
@@ -81,7 +80,7 @@ const Explorer = () => {
                         <Grid item>
                             <h3 style={{color: 'white'}}>Rs. 799 <br/> <span
                                 style={{color: 'white', fontSize: '.5em', marginLeft: 20}}>
-                                                    Price per Class Rs. 120
+                                                    Price per Class Rs. 100
                                                 </span></h3>
 
                         </Grid>
@@ -202,10 +201,9 @@ const Conquerer = () => {
                 </Grid>
                 <Grid item xs={12}>
                     <ul>
-                        <li>For class 11th to 12th</li>
                         <li>Engineering Conquerer</li>
-                        <li>An Augmented Reality based Practical <br/>
-                            Imagination Foundation Course
+                        <li>For class 11th to 12th</li>
+                        <li>Simplify JEE/NEET preparation through Practical Science Experience
                         </li>
                         <li>2 Weeks Course</li>
                         <li >2 View Detailed Curriculum</li>
