@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const base="https://elixarsystems.com/back/kalamlabs"
+const base="https://elixarsystems.com/back/kalamlabs/"
 // const base="http://127.0.0.1:8000/kalamlabs/"
 const apikey = 'f8753847-ffd5-11ea-9fa5-0200cd936042'
 const otpBaseUrl = 'https://2factor.in/API/V1/'
