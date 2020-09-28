@@ -4,8 +4,9 @@ import PaymentSuccess from "./components/paymentstatus";
 import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Slide from "./components/slider";
-import {BrowserRouter as Router,Route,Switch} from 'react-router-dom'
+import {HashRouter as Router,Route,Switch} from 'react-router-dom'
 // import Carousel from "./components/slider";
+import Frame1 from './components/frame1'
 const  Home = React.lazy(()=>import("./components/home"));
 const  PreCheckout = React.lazy(()=>import("./components/precheckout"));
 export const FormSelectContext = createContext(null)
@@ -37,6 +38,7 @@ function App() {
 
     },[register])
   return (
+      // <Frame1/>
       <React.Fragment>
           <Router>
               <Switch>
@@ -54,12 +56,12 @@ function App() {
                           </Grid>
 
                       </Grid>}>
+
                           <Route exact path={'/'} component={Home} />
-                              {/*<Slide />*/}
-                          {/*</Route>*/}
+
 
                             <Route exact path={'/checkout/:trial'} component={PreCheckout}/>
-                            {/*<Route exact path={'/booktrial'} component={PreCheckout}/>*/}
+                            <Route exact path={'/booktrial'} component={PreCheckout}/>
                          <Route exact path={'/paymentstatus/:orderId'} component={PaymentSuccess}/>
                       </Suspense>
                   </SpinnerContext.Provider>
@@ -68,9 +70,9 @@ function App() {
                   </FormSelectContext.Provider>
                     </BookFreeContext.Provider>
                   </PopupContext.Provider>
-              </Switch>
+             </Switch>
           </Router>
-      </React.Fragment>
+       </React.Fragment>
   );
 }
 
