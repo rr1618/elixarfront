@@ -1,100 +1,98 @@
-import React, {useContext, useEffect} from "react";
+import React, { useEffect} from "react";
 import Aos from "aos";
 import "aos/dist/aos.css"
-import { makeStyles } from '@material-ui/core/styles';
-import Popover from '@material-ui/core/Popover';
+
 import Popup from "./popup";
 import explorer from '../assets/explorer.png'
 import Paper from '@material-ui/core/Paper';
 import {useMediaQuery} from "react-responsive";
 import {PopupContext} from "../App";
-import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import conquerer from "../assets/conquerer.png";
 import conquererShort from '../assets/conquerershort.png'
 import explorerShort from '../assets/explorershort.png'
 import {Link} from 'react-router-dom'
-const useStyles = makeStyles((theme) => ({
-    typography: {
-        padding: theme.spacing(2),
-    },
-}));
+import Modal from 'react-modal';
+
+
+// Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
+Modal.setAppElement('#root')
+
+
+
 
 const Explorer = (props) => {
+
+
+    const {modalIsOpen,setIsOpen} = React.useContext(PopupContext);
+    function openModal() {
+        setIsOpen(true);
+    }
+
+
+    function closeModal(){
+        setIsOpen(false);
+    }
     useEffect(()=>{
 
     },[])
     const isPortrait = useMediaQuery({ query: '(orientation: portrait)' })
-    const classes = useStyles();
-    const {anchorEl, setAnchorEl} = useContext(PopupContext);
 
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
 
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
 
-    const open = Boolean(anchorEl);
-    const id = open ? 'simple-popover' : undefined;
-    useEffect(() => {
-        Aos.init({duration: 1000})
-    }, [])
-    return (<div>
+
+
+    return (<div >
 
         {isPortrait?<div
 
         >
-            <div>
-
-            </div>
-            <Popover
-                id={id}
-                open={open}
-                anchorEl={anchorEl}
-                onClose={handleClose}
-                anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'left',
-                }}
-                transformOrigin={{
-                    vertical: 'center',
-                    horizontal: 'left',
-                }}
+            <Modal
+                isOpen={modalIsOpen}
+                // onAfterOpen={afterOpenModal}
+                onRequestClose={closeModal}
+                style={{width:'100%'}}
+                contentLabel="Example Modal"
             >
-
                 <Popup/>
-            </Popover>
+            </Modal>
             <Paper elevation={5} className={'paper'} style={{backgroundColor: '#272330', marginRight: 10}}>
                 <Grid container justify={'center'}>
-                    <Grid item lg={12}>
-                        <img src={explorer} alt=""/>
+                    <Grid item container>
+
+                        <Grid item xs={12}>
+
+                            <img src={explorer} alt=""/>
+
+                        </Grid>
                     </Grid>
                     <Grid item xs={12}>
 
                         <ul>
-                            <li>Science Explorer</li>
-                            <li>For class 1th to 10th</li>
+                            <li>For class 1st to 10th</li>
+                            <li>Winter School</li>
                             <li>World’s First AR-based Science Course
                             </li>
-                            <li>2 Weeks Course</li>
-                            <li onClick={handleClick}>2 View Detailed Curriculum</li>
-                            <li>2 Book A Free AR Trial Now</li>
+                            <li>1 Week Course</li>
+                            <li onClick={openModal}>View Detailed Curriculum</li>
+                            {/*<li>Book A Free AR Trial Now</li>*/}
                         </ul>
                     </Grid>
                     <Grid item container justify={'space-between'}>
                         <Grid item>
-                            <h3 style={{color: 'white'}}>Rs. 799 <br/> <span
-                                style={{color: 'white', fontSize: '.5em', marginLeft: 20}}>
-                                                    Price per Class Rs. 100
-                                                </span></h3>
+                            <h3 style={{color: 'white',paddingLeft:10}}>Rs. 499
+                            {/*<span*/}
+                            {/*    style={{color: 'white', fontSize: '.5em', marginLeft: 20}}>*/}
+                            {/*                        Price per Class Rs. 100*/}
+                            {/*                    </span>*/}
+                            </h3>
 
                         </Grid>
                         <Grid item>
                             <h4 style={{color: 'white', paddingRight: 10}}>
-                                <del>Rs. 5,999</del>
+                                <del>Rs. 1,599</del>
                             </h4>
                         </Grid>
                     </Grid>
@@ -120,53 +118,53 @@ const Explorer = (props) => {
             // data-aos-easing="ease-in-sine"
             data-aos-delay="500"
         >
-            <Popover
-                id={id}
-                open={open}
-                anchorEl={anchorEl}
-                onClose={handleClose}
-                anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'left',
-                }}
-                transformOrigin={{
-                    vertical: 'center',
-                    horizontal: 'left',
-                }}
-                style={isPortrait?{width:'50vw'}:{width:'90vw'}}
+            <Modal
+                isOpen={modalIsOpen}
+                // onAfterOpen={afterOpenModal}
+                onRequestClose={closeModal}
+                style={{width:'90vw'}}
+                contentLabel="Example Modal"
             >
-
                 <Popup/>
-            </Popover>
+            </Modal>
             <Paper elevation={5} className={'paper'} style={{backgroundColor: '#272330', marginRight: 10}}>
-                <Grid container justify={'center'}>
-                    <Grid item lg={12}>
-                        <img src={explorer} alt=""/>
-                    </Grid>
-                    <Grid item xs={12}>
+                <Grid container justify={'center'} >
+                    <Grid item container>
+                        {/*<Grid item xs={3} >*/}
+                        {/*    <p style={{color:'white',fontSize:12}}>Sponsered by Happee Learning</p>*/}
+                        {/*</Grid>*/}
+                        <Grid item lg={12}>
 
+                            <img src={explorer} alt=""/>
+
+                        </Grid>
+                    </Grid>
+
+
+                    <Grid item xs={12}>
                         <ul>
-                            <li>For class 8th to 10th</li>
-                            <li>Science Explorer</li>
-                            <li>An Augmented Reality based Practical <br/>
-                                Imagination Foundation Course
-                            </li>
-                            <li>2 Weeks Course</li>
-                            <li onClick={handleClick}>2 View Detailed Curriculum</li>
-                            <li>2 Book A Free AR Trial Now</li>
+
+                            <li>For class 1st to 10th</li>
+                            <li>Winter School</li>
+                            <li>World's First AR-based Science Course</li>
+                            <li>1 Week Course</li>
+                            <li onClick={openModal} >View Detailed Curriculum</li>
+                            {/*<li>Book A Free AR Trial Now</li>*/}
                         </ul>
                     </Grid>
                     <Grid item container justify={'space-between'}>
                         <Grid item>
-                            <h3 style={{color: 'white'}}>Rs. 799 <br/> <span
-                                style={{color: 'white', fontSize: '.5em', marginLeft: 20}}>
-                                                    Price per Class Rs. 100
-                                                </span></h3>
+                            <h3 style={{color: 'white',paddingLeft:10}}>Rs. 499
+                            {/*<span*/}
+                            {/*    style={{color: 'white', fontSize: '.5em', marginLeft: 20}}>*/}
+                            {/*                        Price per Class Rs. 100*/}
+                            {/*                    </span>*/}
+                            </h3>
 
                         </Grid>
                         <Grid item>
                             <h4 style={{color: 'white', paddingRight: 10}}>
-                                <del>Rs. 5,999</del>
+                                <del>Rs. 1,599</del>
                             </h4>
                         </Grid>
                     </Grid>
@@ -213,8 +211,8 @@ const Conquerer = () => {
                         <li>For class 11th to 12th</li>
                         <li>Simplify JEE/NEET preparation through Practical Science Experience
                         </li>
-                        <li>2 Weeks Course</li>
-                        <li >2 View Detailed Curriculum</li>
+                        <li>1 Week Course</li>
+                        <li >View Detailed Curriculum</li>
                     </ul>
                 </Grid>
                 <Grid item>
@@ -253,11 +251,10 @@ const Conquerer = () => {
                     <ul>
                         <li>For class 11th to 12th</li>
                         <li>Engineering Conquerer</li>
-                        <li>An Augmented Reality based Practical <br/>
-                            Imagination Foundation Course
+                        <li>Simplify JEE/NEET preparation through Practical Science Experience
                         </li>
-                        <li>2 Weeks Course</li>
-                        <li >2 View Detailed Curriculum</li>
+                        <li>Weeks Course</li>
+                        <li >View Detailed Curriculum</li>
                     </ul>
                 </Grid>
                 <Grid item>
@@ -302,7 +299,7 @@ const ExplorerShort = () => {
                 <Grid item lg={10}>
                     <Link to={'/checkout/buycourse'} style={{textDecoration: 'none', color: 'white'}}><p>Science Explorer <br/>
                         <span
-                            style={{color: '#A3E9FF', fontSize: '.7em'}}>Course for class 8th to 10th</span></p></Link>
+                            style={{color: '#A3E9FF', fontSize: '.7em'}}>Course for class 1st to 10th</span></p></Link>
                 </Grid>
             </Grid>
 

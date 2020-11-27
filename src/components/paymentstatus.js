@@ -20,10 +20,7 @@ const PaymentSuccess=(props)=>
                             <div className="success-title">
                                 Payment Complete
                             </div>
-                            <div className="success-description">
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's standard dummy text.
-                            </div>
+
                             <div className="order-details">
                                 <div className="order-number-label">Order Number</div>
                                 <div className="order-number">{props.match.params.orderId}</div>

@@ -3,12 +3,13 @@ import './App.css';
 import PaymentSuccess from "./components/paymentstatus";
 import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import Slide from "./components/slider";
 import {HashRouter as Router,Route,Switch} from 'react-router-dom'
-// import Carousel from "./components/slider";
-import Frame1 from './components/frame1'
 const  Home = React.lazy(()=>import("./components/home"));
 const  PreCheckout = React.lazy(()=>import("./components/precheckout"));
+export const startBase="https://www.elixarsystems.com/kalam-labs"
+export const base="https://www.elixarsystems.com/kalam-labs/kalamlabs/"
+export const apikey = 'f8753847-ffd5-11ea-9fa5-0200cd936042'
+export const otpBaseUrl = 'https://2factor.in/API/V1/'
 export const FormSelectContext = createContext(null)
 export const RegisterContext = createContext(null)
 export const OtpContext = createContext(null)
@@ -25,14 +26,17 @@ function App() {
         name:'',
         mobile:'',
         school:'',
+        class:'',
         email:'',
         date:'',
         slot:'',
         order_id:'',
+        amount:'49900',
+        coupon:'',
         payment:false
     })
     const [otpContent,setOtpContent] = useState(null)
-    const [anchorEl, setAnchorEl] = useState(null);
+    const [modalIsOpen,setIsOpen] = useState(false);
     const [spin,setSpin] = useState(false)
     useEffect(()=>{
 
@@ -42,7 +46,7 @@ function App() {
       <React.Fragment>
           <Router>
               <Switch>
-                  <PopupContext.Provider value={{anchorEl, setAnchorEl}}>
+                  <PopupContext.Provider value={{modalIsOpen,setIsOpen}}>
                     <BookFreeContext.Provider value={{book,setBook}}>
                   <FormSelectContext.Provider value={{form,setForm}}>
                   <RegisterContext.Provider value={{register,setRegister}}>
@@ -54,12 +58,8 @@ function App() {
                           <Grid item>
                               <CircularProgress />
                           </Grid>
-
                       </Grid>}>
-
                           <Route exact path={'/'} component={Home} />
-
-
                             <Route exact path={'/checkout/:trial'} component={PreCheckout}/>
                             <Route exact path={'/booktrial'} component={PreCheckout}/>
                          <Route exact path={'/paymentstatus/:orderId'} component={PaymentSuccess}/>

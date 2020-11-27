@@ -3,7 +3,6 @@ import React, {useEffect} from "react";
 import Aos from "aos";
 import "aos/dist/aos.css"
 import {useMediaQuery} from "react-responsive";
-import frame1 from "../assets/1.jpg";
 import mountain from '../assets/mountain.png'
 
 const Frame2 = ()=>{
@@ -17,8 +16,7 @@ const Frame2 = ()=>{
                 <div
                     data-aos={'fade-up'}
                 >
-                    <p id={'ina'}>NCERT Study proves AR learning increases marks by 50% <br/>
-                        Our AR Courses Make Science Real and turn boring lessons imaginative
+                    <p id={'ina'} style={{textTransform:'capitalize'}}>NCERT Study proves AR learning increases marks by 50%
                     </p>
                 </div>
                 <div
@@ -26,7 +24,8 @@ const Frame2 = ()=>{
                     data-aos-delay="300"
                 >
                 <p  id={'kalamlab'} style={{color:'white'}}>
-                    Kalam Lab Augmented reality (AR) corses lets students and teachers overlay information, visuals,<br/> and other content into the real world, providing new context and powerful connections to enhance <br/> learning and build understanding. Our AR apps making existing lessons  to turn a boring lessons <br/> magical, make a science lesson as vivid as the real, and let you peer inside everyday objects to <br/> understand how they’re put together.
+                    Students are taught the essential scientific skill-sets of Experimentation and Observation. These skills help students <br/> learn on their own, and never be dependent on a tutor or coaching.
+
                 </p>
                 </div>
             </Grid>

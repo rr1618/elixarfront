@@ -38,19 +38,15 @@ const About = () => {
                     <div
                         data-aos={'slide-up'}
                     >
-                        <h5 style={{color: '#8A808E', fontSize: 20}}>WHO WE ARE</h5>
+                        <h5 style={{color: '#8A808E', fontSize: 20}}>Our Beliefs</h5>
                     </div>
                     <div
                         data-aos={'fade-in'}
                         data-aos-delay="100"
                     >
                     <p style={{fontSize:20}}>
-                        We Bridge the Gap between Theory and Application. We believe students should Learn through interactivity and experience, not through Online Videos or Boring Books.
+                       We Believe Science should be Learnt as Exploration, not as a Memorization.
 
-                        {/*What if the line between your learning and the practicality didn’t exist? With Kalam labs*/}
-                        {/*augmented reality, not only is that possible, it’s here. Our products transforms how you learn,*/}
-                        {/*play, work, teach and connect with the world around you. It’s the perfect way to visualise*/}
-                        {/*things that would be impossible or impractical to see otherwise.*/}
                     </p>
                     </div>
                 </Grid>

@@ -34,29 +34,30 @@ const Detail = (props) => {
                         data-aos={'slide-up'}
 
                     >
-                    <p>Science Explorer <br/><span style={{color: '#8A808E', fontSize: '13px'}}>
+                    <p>Winter School <br/><span style={{color: '#8A808E', fontSize: '13px'}}>
 
 
-                    Course for class 11th to 12th</span>
+                    Course for class 1st to 10th</span>
                     </p></div>
                     {isPortrait ? <div></div> :
                        <div
                         data-aos={'slide-up'}
                         data-aos-delay="100"
-                       > <p style={{fontSize: 13, fontFamily: "inherit"}}>An Augmented Reality based
-                           Practical <br/> Imagination Foundation Course</p></div>}
+                       > <p style={{fontSize: 13, fontFamily: "inherit"}}>World's First AR-based Science Course</p></div>}
                     <div
                         data-aos={'slide-up'}
                         data-aos-delay="200"
                     >
-                    <span style={{color: '#8A808E', fontSize: '12px'}}>2 Weeks Course</span>
+                    <span style={{color: '#8A808E', fontSize: '12px'}}>1 Week Course</span>
                     </div>
                     <div
                         data-aos={'slide-up'}
                         data-aos-delay="300"
                     >
-                    <p>Rs. 799 <del style={{marginLeft: 80, textAlign: 'right'}}>Rs 5,999</del> <br/> <span
-                        style={{fontSize: 12, fontFamily: "sans-serif"}}>Price Per Class Rs 120</span></p>
+                    <p>Rs. 499 <del style={{marginLeft: 80, textAlign: 'right'}}>Rs 1,599</del> <br/>
+                    {/*<span*/}
+                    {/*    style={{fontSize: 12, fontFamily: "sans-serif"}}>Price Per Class Rs 100</span>*/}
+                    </p>
                     </div>
                 </Grid>
             </Grid>
@@ -78,7 +79,7 @@ const Detail = (props) => {
                             </Grid>
                             <Grid item lg={8}>
 
-                                <p>An Augmented Reality based Practical Imagination Foundation Course</p>
+                                <p>Fill the Registration Form</p>
 
                             </Grid>
                         </Grid><Grid item container lg={8}>
@@ -87,7 +88,7 @@ const Detail = (props) => {
                         </Grid>
                         <Grid item lg={8}>
 
-                            <p>An Augmented Reality based Practical Imagination Foundation Course</p>
+                            <p>Pay the required amount</p>
 
                         </Grid>
                     </Grid><Grid item container lg={8}>
@@ -96,7 +97,7 @@ const Detail = (props) => {
                         </Grid>
                         <Grid item lg={8}>
 
-                                <p>An Augmented Reality based Practical Imagination Foundation Course</p>
+                                <p>You will be getting a confirmation mail and order invoice</p>
                         </Grid>
                     </Grid>
                         <Grid item container lg={8}>
@@ -105,7 +106,7 @@ const Detail = (props) => {
                         </Grid>
                         <Grid item lg={8}>
 
-                            <p>An Augmented Reality based Practical Imagination Foundation Course</p>
+                            <p><p>You will be contacted regarding the exact details of the Course after registration.</p></p>
 
                         </Grid>
                     </Grid>
@@ -137,8 +138,7 @@ const Detail = (props) => {
                        <div
                         data-aos={'slide-up'}
                         data-aos-delay="100"
-                       > <p style={{fontSize: 13, fontFamily: "inherit"}}>An Augmented Reality based
-                           Practical <br/> Imagination Foundation Course</p></div>}
+                       > <p style={{fontSize: 13, fontFamily: "inherit"}}>Simplify JEE/NEET preparation through Practical Science Experience</p></div>}
                     <div
                         data-aos={'slide-up'}
                         data-aos-delay="200"
@@ -149,8 +149,8 @@ const Detail = (props) => {
                         data-aos={'slide-up'}
                         data-aos-delay="300"
                     >
-                    <p>Rs. 799 <del style={{marginLeft: 80, textAlign: 'right'}}>Rs 5,999</del> <br/> <span
-                        style={{fontSize: 12, fontFamily: "sans-serif"}}>Price Per Class Rs 120</span></p>
+                    <p>Rs. 499 <del style={{marginLeft: 80, textAlign: 'right'}}>Rs 5,999</del> <br/> <span
+                        style={{fontSize: 12, fontFamily: "sans-serif"}}>Price Per Class Rs 100</span></p>
                     </div>
                 </Grid>
             </Grid>
@@ -172,7 +172,7 @@ const Detail = (props) => {
                             </Grid>
                             <Grid item lg={8}>
 
-                                <p>An Augmented Reality based Practical Imagination Foundation Course</p>
+                                <p>Fill the Registration Form</p>
 
                             </Grid>
                         </Grid><Grid item container lg={8}>
@@ -181,7 +181,7 @@ const Detail = (props) => {
                         </Grid>
                         <Grid item lg={8}>
 
-                            <p>An Augmented Reality based Practical Imagination Foundation Course</p>
+                            <p>Pay the required amount</p>
 
                         </Grid>
                     </Grid><Grid item container lg={8}>
@@ -190,7 +190,7 @@ const Detail = (props) => {
                         </Grid>
                         <Grid item lg={8}>
 
-                                <p>An Augmented Reality based Practical Imagination Foundation Course</p>
+                                <p>You will be getting a confirmation mail and order invoice</p>
                         </Grid>
                     </Grid>
                         <Grid item container lg={8}>
@@ -199,7 +199,7 @@ const Detail = (props) => {
                         </Grid>
                         <Grid item lg={8}>
 
-                            <p>An Augmented Reality based Practical Imagination Foundation Course</p>
+                            <p>You will be contacted regarding the exact details of the Course after registration.</p>
 
                         </Grid>
                     </Grid>
@@ -247,24 +247,7 @@ useEffect(()=>{
     const id = open ? 'simple-popover' : undefined;
 
     return (<React.Fragment>
-        {/*<Popover*/}
-        {/*    id={id}*/}
-        {/*    open={open}*/}
-        {/*    anchorEl={anchorEl}*/}
-        {/*    onClose={handleClose}*/}
-        {/*    anchorOrigin={{*/}
-        {/*        vertical: 'bottom',*/}
-        {/*        horizontal: 'center',*/}
-        {/*    }}*/}
-        {/*    transformOrigin={{*/}
-        {/*        vertical: 'top',*/}
-        {/*        horizontal: 'center',*/}
-        {/*    }}*/}
-        {/*    style={!isPortrait?{width:'80%',marginLeft:100}:{width:'95%',marginLeft:0}}*/}
 
-        {/*>*/}
-        {/*    <Popup/>*/}
-        {/*</Popover>*/}
         <Grid container className={'precheckout'} >
             <Grid item container md={12} justify={'center'} >
                 <Grid item>
@@ -292,7 +275,7 @@ useEffect(()=>{
                     <p style={{color:'#8373A5',paddingLeft:10}}>Email: kalam-labs@elixarsystems.com</p>
                 </Grid>
                     <Grid item>
-                    <p style={{color:'#8373A5',paddingLeft:10}}>Phone: +91 9897676787</p>
+                    <p style={{color:'#8373A5',paddingLeft:10}}>Phone: +91 9140658594</p>
                 </Grid>
                 </Grid>}
 

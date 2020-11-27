@@ -17,23 +17,25 @@ import 'fontsource-roboto';
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import {PopupContext} from '../App'
 const Popup =()=>{
-    const {anchorEl, setAnchorEl} =useContext(PopupContext);
+    const {modalIsOpen,setIsOpen} =useContext(PopupContext);
     useEffect(()=>{
 
-    },[anchorEl])
+    },[modalIsOpen])
     const isPortrait = useMediaQuery({ query: '(orientation: portrait)' })
 
 
     const handleClose = () => {
         console.log("clicked")
-        setAnchorEl(null);
+        setIsOpen(false);
     };
     return(
         <Grid container justify={'center'} className={'popup'}  >
             <Grid item container md={6} xs={12} justify={'flex-start'} >
-                <Grid item>
-                    <HighlightOffIcon onClick={handleClose}/>
-                </Grid>
+                {isPortrait&&<Grid item container style={{textAlign:'right',cursor:'pointer'}}>
+                    <Grid item xs={12}>
+                        <HighlightOffIcon onClick={handleClose}/>
+                    </Grid>
+                </Grid>}
                 <Grid item>
                     <Paper elevation={1} style={{padding:'0px 15px 0px 15px',borderRadius:10}}>
                         <p style={{fontWeight:'lighter',fontSize:'3em'}}> Scientific Explorer <br/><span style={{color:"#FFA800",fontSize:'.5em'}}><StarIcon /><StarIcon/><StarIcon/><StarIcon/><StarHalfIcon/> <span >4.8</span> <span style={{color:"black",marginLeft:10}}>471 Ratings</span></span></p>
@@ -65,45 +67,24 @@ const Popup =()=>{
                 </Grid>
             </Grid>
             <Grid item container  xs={12} md={6} justify={'center'} style={{textAlign:'center'}}>
+                {!isPortrait&&<Grid item container style={{textAlign:'right',cursor:'pointer'}}>
+                    <Grid item xs={12}>
+                        <HighlightOffIcon onClick={handleClose}/>
+                    </Grid>
+                </Grid>}
                 <Grid item xs={12}>
                     <img src={Logo} height={150} width={200} style={{borderStyle:'solid',borderWidth:1,borderRadius:10,borderColor:'blue'}} alt=""/>
                 </Grid>
                 <Grid item  >
-                    {/*<Paper style={{borderRadius:10}}>*/}
-                        {/*<Grid container className={'programeguide'}>*/}
-                        {/*    <Grid item lg={12}>*/}
-                        {/*        <Typography variant="h5" component="h2" gutterBottom><span><CardMembershipIcon/></span>*/}
-                        {/*            Shareable Certificate <br/><em>Earn a Cerfiticate upon completion</em>*/}
-                        {/*        </Typography><Typography variant="h5" component="h2" gutterBottom><span><DesktopWindowsIcon/></span>*/}
-                        {/*            100% Online <br/> <em>Start instantly and learn at your ouwn schedule</em>*/}
-                        {/*        </Typography><Typography variant="h5" component="h2" gutterBottom><span><TodayIcon/></span>*/}
-                        {/*            Flexible Deadline <br/> <em> Reset deadlines in accordance to your schedule</em>*/}
-                        {/*        </Typography><Typography variant="h5" component="h2" gutterBottom><span><ScheduleIcon/></span>*/}
-                        {/*            Approx 25 hours to complete <br/><em>Reset deadlines in accordance to your schedule</em>*/}
-                        {/*        </Typography>*/}
-                        {/*    </Grid>*/}
-                        {/*</Grid>*/}
+
                     {isPortrait?<img src={capturemobile} alt=""/>: <img src={capture} alt=""/>}
-                    {/*</Paper>*/}
                 </Grid>
                 <Grid container item md={7} xs={12} justify={'space-around'} >
-                    {/*<Grid item >*/}
-                    {/*    <img src={Logo} height={30} alt=""/>*/}
-                    {/*</Grid>*/}
-                    {/*<Grid item >*/}
-                    {/*    <img src={Logo} height={30} alt=""/>*/}
-                    {/*</Grid>*/}
+
                     {isPortrait?<img src={partnermobile} alt=""/>: <img src={partner} alt=""/>}
-                    {/*<img src={partner} alt=""/>*/}
+
                 </Grid>
-                {/*<Grid container item xs={12} md={7} justify={'space-between'} >*/}
-                {/*    <Grid item xs={6}>*/}
-                {/*        <p>Anuradha Mathur <span>HOD Kalam Labs <br/>ex-HOD Physics, NCERT India,<br/>Swayyam India Platform</span></p>*/}
-                {/*    </Grid>*/}
-                {/*    <Grid item xs={6}>*/}
-                {/*        <p>Luc Piaton <span> CEO, Happee Learning France. <br/> French Educationalist</span></p>*/}
-                {/*    </Grid>*/}
-                {/*</Grid>*/}
+
 
                 </Grid>
             </Grid>

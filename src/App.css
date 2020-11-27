@@ -97,6 +97,10 @@ h{
   top: 0;
 }
 
+
+#menu{
+  background-color: red;
+}
 .popup{
   background-color:#F5FFFE;
   padding:20px;
@@ -176,9 +180,12 @@ li:nth-child(6){
   text-align: center;
 }
 #ina{
-  color:#C160E5;
+  /*color:#C160E5;*/
+  /*background: linear-gradient(to right, #8e2de2, #4a00e0);;*/
+  color:deeppink;
   font-size:2em;
   text-align:center;
+  font-weight: bolder;
 }
 .kalamfooter span{
   color: #8373A5;
@@ -303,7 +310,8 @@ li:nth-child(6){
 }
 .precheckout{
   background-color: #272330;
-  height: 100vh;
+  height: min-content;
+  padding-bottom: 300px;
 }
 .container p{
   text-align: center;
@@ -354,6 +362,8 @@ and (max-width: 650px) {
     /*background-color:#F5FFFE;*/
     padding:20px;
     /*padding-left:60px;*/
+    width: 80vw;
+    height: 80vh;
   }
   .order-details .order-number {
     border-top: 1px solid #ccc;

@@ -1,16 +1,19 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useEffect, useRef, useState} from "react";
 import 'date-fns';
+import {startBase} from "../App";
 import "aos/dist/aos.css"
+import { makeStyles } from '@material-ui/core/styles';
+import InputLabel from '@material-ui/core/InputLabel';
 import Grid from '@material-ui/core/Grid';
-import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
 import razorlogo from '../assets/razorlogo.jpg'
 import Paper from '@material-ui/core/Paper';
 import OtpInput from 'react-otp-input';
 import {FormSelectContext,  OtpContext, RegisterContext,SpinnerContext} from "../App";
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 import Aos from "aos";
 import MenuItem from '@material-ui/core/MenuItem';
-import NativeSelect from '@material-ui/core/NativeSelect';
 import API from "../api-service";
 import {
     useParams
@@ -29,12 +32,23 @@ const currencies = [
         label: '+1',
     },
 ];
+const useStyles = makeStyles((theme) => ({
+    formControl: {
+        margin: theme.spacing(1),
+        minWidth: 120,
+    },
+    selectEmpty: {
+        marginTop: theme.spacing(2),
+    },
+}));
 const Form1 = () => {
+    const classes = useStyles();
     const {trial}  =useParams()
     const [currency, setCurrency] = React.useState('+91');
     const [text,setText] = useState('Buy now')
     const {form, setForm} = useContext(FormSelectContext)
     const {spin,setSpin} = useContext(SpinnerContext)
+    const coupon =useRef(null)
     const {register, setRegister} = useContext(RegisterContext)
     const {otpContent, setOtpContent} = useContext(OtpContext)
     useEffect(() => {
@@ -48,8 +62,25 @@ const Form1 = () => {
     };
     const handleSubmit = () => {
         setSpin(true)
+        if(trial=='buycourse')
+        {
+            API.getOrderId({name:register.name,amount:register.amount}).then(res=>{
+                setRegister({...register,order_id:res.data['order_id']})
+                API.sendOtp(register.mobile).then(res => {
+                    setOtpContent(res.data['Details'])
+                    setForm(1)
+                    setSpin(false)
+                }).catch(error => {
+                    setSpin(false)
+                    alert("Unable to send OTP")
+            })
+        }).catch(err=>alert("problem fetching order id")
+        )
+
+        }
+        else{
+            // setForm(2)
             API.sendOtp(register.mobile).then(res => {
-                console.log(res.data)
                 setOtpContent(res.data['Details'])
                 setForm(1)
                 setSpin(false)
@@ -57,6 +88,8 @@ const Form1 = () => {
                 setSpin(false)
                 alert("Unable to send OTP")
             })
+        }
+
 
     }
     return (<React.Fragment>
@@ -114,6 +147,37 @@ const Form1 = () => {
                                         />
                                     </Grid>
                                     <Grid item xs={10}>
+                                        <FormHelperText className={'helper'} id="my-helper-text">Class in which you are studying</FormHelperText>
+                                        <FormControl variant="filled" className={classes.formControl}>
+                                            <InputLabel htmlFor="outlined-age-native-simple">Class</InputLabel>
+                                            <Select
+                                                native
+                                                value={register.class}
+                                                onInput={e=>setRegister({
+                                                    ...register,
+                                                    class: e.target.value
+                                                })}
+                                                label="Age"
+                                                inputProps={{
+                                                    name: 'Class',
+                                                    id: 'outlined-age-native-simple',
+                                                }}
+                                            >
+                                                <option aria-label="None" value="" />
+                                                <option value={1}>1st</option>
+                                                <option value={2}>2nd</option>
+                                                <option value={3}>3rd</option>
+                                                <option value={4}>4th</option>
+                                                <option value={5}>5th</option>
+                                                <option value={6}>6th</option>
+                                                <option value={7}>7th</option>
+                                                <option value={8}>8th</option>
+                                                <option value={9}>9th</option>
+                                                <option value={10}>10th</option>
+                                            </Select>
+                                        </FormControl>
+                                    </Grid>
+                                    <Grid item xs={10}>
                                         <FormHelperText className={'helper'} id="my-helper-text">Actual Email address*</FormHelperText>
                                         <TextValidator
                                             className={'input'}
@@ -164,6 +228,39 @@ const Form1 = () => {
 
                                         />
                                     </Grid>
+                                    <Grid item container xs={10} justify={'space-between'}>
+                                        <Grid item xs={6}>
+                                            <input
+                                                style={{padding:10,
+                                                    marginTop:10,
+                                                    marginBottom:10,
+                                                    fontSize:20,
+                                                    color:'white',
+                                                    outline:'none',
+                                                    borderStyle:'dashed',
+                                                    borderRadius:20,
+                                                    borderWidth:3,
+                                                    backgroundColor:'white',
+                                                    borderColor:'#8373A5'
+                                                }}
+                                                ref={coupon}
+                                                placeholder={'Apply Coupon'}
+                                                onChange={(e)=>{
+                                                    e.persist()
+                                                    API.couponVerification(e.target.value).then(res=>{
+                                                        coupon.current.style.backgroundColor='#81FF01'
+                                                        setRegister({...register,amount:res.data['price'],coupon:e.target.value})
+
+                                                    }).catch(err=>{
+                                                        coupon.current.style.backgroundColor= '#FF0401'
+                                                        setRegister({...register,amount:79900})
+                                                    })
+                                                }}
+                                                size="small"
+                                            />
+                                        </Grid>
+
+                                    </Grid>
                                     <Grid item xs={12} style={{paddingTop: 10, paddingBottom: 30}}>
                                         <Button type="submit" variant={'contained'} style={{backgroundColor: '#19C8FF', color: 'white',}} endIcon={spin&&<CircularProgress color="secondary" />}>Proceed</Button>
                                     </Grid>
@@ -172,6 +269,7 @@ const Form1 = () => {
                             </ValidatorForm>
 
                         </Grid>
+
 
 
                     </Grid>
@@ -192,20 +290,15 @@ const Form2 = () => {
     const handlesubmit = (ootp) => {
         setSpin(true)
         API.verifyOtp({sessionId: otpContent, otp: otp}).then(res => {
-            if(trial=='buycourse')
-                API.getOrderId({name:register.name,amount:'79900'}).then(
-                    res=> {
-                        setRegister({...register,order_id:res.data['order_id']})
-                        setSpin(false)
-                        setForm(3)
-                    }).catch(error=>{
-                    setSpin(false)
-                    alert("Problem fetching order Id")
-                })
-            else{
+            if(trial=='buycourse') {
                 setSpin(false)
-                setForm(2)
+                setForm(3)
+
             }
+            else{
+            setSpin(false)
+            setForm(2)
+        }
 
         }).catch(error => {
             setSpin(false)
@@ -285,22 +378,19 @@ const Form3 = () => {
         setSpin(true)
         if(register.date&&register.slot)
         {
-            if(trial=='buycourse')
-            API.getOrderId({name:register.name,amount:'50000'}).then(
-                res=> {
-                    setRegister({...register,order_id:res.data['order_id']})
-                    setSpin(false)
-                    setForm(3)
-                }).catch(error=>{
-                setSpin(false)
-                alert("Problem fetching order Id")
-            })
-            if(trial=='trial')
-                API.bookTrial({register}).then(
+                API.bookTrial({
+                    email:register.email,
+                    school:register.school,
+                    name:register.name,
+                    slot:register.slot,
+                    date:register.date,
+                    mobile:register.mobile
+                }).then(
                     res=> {
+
                         setSpin(false)
                         alert('Response Saved')
-                        window.location.href='https://kalamlabs.netlify.app/'
+                        window.location.href=startBase
                     }).catch(error=>{
                     setSpin(false)
                     alert("Response already exists")
@@ -330,7 +420,7 @@ const Form3 = () => {
                                 id="date"
                                 label="Select date"
                                 type="date"
-                                defaultValue="2017-05-24"
+                                defaultValue={`${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`}
                                 InputLabelProps={{
                                     shrink: true,
                                 }}
@@ -404,7 +494,7 @@ const Form3 = () => {
                             <Button variant={'contained'}
                                     style={{backgroundColor: '#19c8ff', color: 'white', fontSize: 12}}
                                     onClick={handleSubmit} endIcon={spin&&<CircularProgress color="secondary" />}
-                            >Confirm Slot and Pay <br/></Button>
+                            >Confirm Slot</Button>
 
                         </Grid>
                     </Grid>
@@ -418,14 +508,14 @@ const Form3 = () => {
 const Form4 = () => {
     const {register, setRegister} = useContext(RegisterContext)
     const {spin,setSpin} = useContext(SpinnerContext)
-
     useEffect(()=>{
-
-    },[register])
+       console.log("order id",register.order_id)
+    },[])
 
     var options = {
+        // "key": "rzp_test_2srLi3kSASWT0B",
         "key": "rzp_live_0RdkjhtdlQnks7",
-        "amount": "79900",
+        "amount": register.amount,
         "currency": "INR",
         "name": "Elixir Systems",
         "description": "Kalam Labs Registration",
@@ -433,33 +523,48 @@ const Form4 = () => {
         "order_id": register.order_id,
         "handler": function (response){
             setSpin(true)
-            API.verifySignature({order_id:response.razorpay_order_id,payment_id:response.razorpay_payment_id,signature:response.razorpay_signature}).then(
+            API.verifySignature({
+                order_id:register.order_id,
+                payment_id:response.razorpay_payment_id,
+                signature:response.razorpay_signature
+            }).then(
                 res=>{
-                    API.register({...register,order_id:response.razorpay_order_id,
+                    API.register({
+                        name:register.name,
+                        email:register.email,
+                        school:register.school,
+                        mobile:register.mobile,
+                        amount:register.amount,
+                        coupon:register.coupon,
+                        class:register.class,
+                        order_id:response.razorpay_order_id,
                         payment_id:response.razorpay_payment_id,
                         payment:true,
-                        payment_amount:'799',
                         signature:response.razorpay_signature,}).then(res => {
-                            API.sendMail({name:register.name,email:register.email,amount:'799',order_id:response.razorpay_order_id}).
-                                then(res=> {
-                                    setSpin(false)
-                                alert('A confirmation mail has been sent on ' + register.email)
-                                window.location.href=`https://kalamlabs.netlify.app/paymentstatus/${response.razorpay_order_id}`
-                            }).
-                                catch(err=>{
-                                    setSpin(false)
-                                    alert('Problem sending mail and processing payment')
-                                })
+                        window.location.href=`https://elixarsystems.com/kalam-labs/#/paymentstatus/${response.razorpay_order_id}`
+                        // API.sendMail({name:register.name,
+                        //     email:register.email,
+                        //     amount:register.amount,
+                        //     order_id:response.razorpay_order_id}).
+                        // then(res=> {
+                        //     setSpin(false)
+                        //     alert('A confirmation mail has been sent on ' + register.email)
+                        //     window.location.href=`https://elixarsystems.com/kalam-labs/#/paymentstatus/${response.razorpay_order_id}`
+                        // }).
+                        // catch(err=>{
+                        //     setSpin(false)
+                        //     alert('Problem sending mail, contact elixarsystems')
+                        // })
 
                     }).catch(
                         error => {
                             setSpin(false)
-                            alert("Mobile Number Already registered")
+                            alert("User Already Registered, Payment will be refunded if deducted within 2 weeks")
                         }
                     )
                 }
             ).catch(err=>{
-                alert("signature verification failed")
+                alert("payment verification failed, your amount if deducted will be refunded within 2 weeks")
             })
 
         },
@@ -476,6 +581,9 @@ const Form4 = () => {
             "color": "#2A2A2A"
         }
     };
+    useEffect(()=>{
+    },[register,register.order_id,options])
+
     var rzp1 = new window.Razorpay(options);
 
     return (
@@ -498,14 +606,14 @@ const Form4 = () => {
                                 <p style={{fontWeight: 'lighter', fontSize: 12, color: '#8A808E'}}>Payment Details</p>
                             </Grid>
                             <Grid item xs={8}>
-                                <p style={{fontWeight: 'bolder', fontSize: '13px'}}>Engineering Conquerer Course <br/>
+                                <p style={{fontWeight: 'bolder', fontSize: '13px'}}>Winter School Course <br/>
                                     <span
-                                        style={{fontWeight: 'lighter', color: '#8A808E'}}>For class 11th to 12th</span>
+                                        style={{fontWeight: 'lighter', color: '#8A808E'}}>For class 1st to 10th</span>
                                 </p>
                             </Grid>
 
                             <Grid item xs={2}>
-                                <p>Rs 5,999</p>
+                                <p>Rs 1,599</p>
                             </Grid>
                             <Grid item xs={8}>
                                 <p style={{fontWeight: 'bolder', fontSize: '13px', color: '#C160E5'}}>Special Discount
@@ -513,14 +621,29 @@ const Form4 = () => {
                                 </p>
                             </Grid>
                             <Grid item xs={2}>
-                                <p>-Rs 5,000</p>
+                                <p>Rs 1,100</p>
                             </Grid>
+                            <Grid item container xs={10}>
+                                <Grid item xs={5}>
+                                    <p>Coupon Applied</p>
+                                </Grid>
+                                <Grid item xs={5}>
+                                    <p>{register.coupon}</p>
+                                </Grid>
+
+                                <Grid item xs={2}>
+                                    <p >Rs{(49900-parseInt(register.amount))/100}</p>
+                                </Grid>
+
+                            </Grid>
+
                             <Grid item container xs={10} style={{backgroundColor:'#F2F2F2',borderRadius:15,padding:'0 10px 0 10px',fontWeight:'bolder',margin:'0 0 10px 0'}} justify={'space-between'}>
                                 <Grid item xs={7}>
-                                    <p style={{}}>Total Payable after discount</p>
+                                    <p >Total Payable after discount</p>
                                 </Grid>
                                 <Grid item xs={2}>
-                                    <p>Rs 999</p>
+                                    {register.coupon?<p>Rs {parseInt(register.amount)/100}</p>:<p>Rs {parseInt(register.amount)/100}</p>}
+
                                 </Grid>
                             </Grid>
 
@@ -530,10 +653,13 @@ const Form4 = () => {
 
                                         variant={'contained'}
                                         fullWidth
-                                        style={{backgroundColor: '#19c8ff', color: 'white', fontSize: 12,margin:'0 0 20px 0'}} onClick={(e) => {
-                                    rzp1.open();
-                                    e.preventDefault();
-                                }}>Pay
+                                        style={{backgroundColor: '#19c8ff', color: 'white', fontSize: 12,margin:'0 0 20px 0'}}
+                                            onClick={(e) => {
+                                                rzp1.open();
+                                                e.preventDefault();
+
+
+                                        }}>Pay
                                     Securely  <br/></Button>
 
                             </Grid>

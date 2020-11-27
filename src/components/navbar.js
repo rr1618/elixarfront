@@ -54,7 +54,7 @@ const Nav = ()=>
                             activeClass="active"
                             to="whykalam"
                             spy={true}
-                            hashSpy={true}
+                            // hashSpy={true}
                             smooth={true}
                             duration={1000}
                             offset={-100}
@@ -68,7 +68,7 @@ const Nav = ()=>
                         <Link
                             to="people"
                             spy={true}
-                            hashSpy={true}
+                            // hashSpy={true}
                             smooth={true}
                             duration={1000}
                             offset={-100}
@@ -81,7 +81,7 @@ const Nav = ()=>
                         <Link
                             to="about"
                             spy={true}
-                            hashSpy={true}
+                            // hashSpy={true}
                             smooth={true}
                             duration={1000}
                             offset={-100}

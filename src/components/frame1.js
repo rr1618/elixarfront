@@ -161,7 +161,7 @@ const Frame1=()=>{
                             <div
                                 data-aos="slide-up"
                             >
-                            <p id={'learnscience'}>Learn science <br/> the practical way.</p>
+                            <p id={'learnscience'}>Winter School 2020</p>
                             </div>
                             <div
                                 data-aos="slide-up"
@@ -178,9 +178,9 @@ const Frame1=()=>{
 
 
                         </Grid>
-                        <Grid item className={'warrior'}  xs={10} md={3} lg={5}>
-                            {show&&!isPortrait?<div className={'dfloat'} style={{zIndex:2}}><ConquererShort /></div>:<div id={'explorer'}>{isPortrait?<div></div>:<Conquerer/>}</div>}
-                        </Grid>
+                        {/*<Grid item className={'warrior'}  xs={10} md={3} lg={5}>*/}
+                        {/*    {show&&!isPortrait?<div className={'dfloat'} style={{zIndex:2}}><ConquererShort /></div>:<div id={'explorer'}>{isPortrait?<div></div>:<Conquerer/>}</div>}*/}
+                        {/*</Grid>*/}
                     </Grid>
                 </Grid>
             </Grid>

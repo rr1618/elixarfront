@@ -19,13 +19,13 @@ import harshit from '../assets/harshit.jpg'
 var items = [
     {
         img: faraz,
-        name:'Faraz Ahmad',
+        name:'Ahmad Faraaz',
         description: "Co-Founder",
         linkedin:'https://www.linkedin.com/in/ahmad-faraaz/'
     },
     {
         img: sasakt,
-        name:'Shasakt Tripathi',
+        name:'Sashakt Tripathi',
         description: "Co-Founder",
         linkedin:'https://www.linkedin.com/in/ahmad-faraaz/'
     },
@@ -98,9 +98,9 @@ const Frame5=()=>{
                     <MediaCard name={'Harshit Awasthi'} img={harshit} description={'Co-founder'} linkedin={'https://www.linkedin.com/in/harshit016/'}/>
                 </Grid>
                 <Grid item>
-                    <MediaCard name={'Faraz Ahmad'} img={faraz} description={'Co-founder'} linkedin={'https://www.linkedin.com/in/ahmad-faraaz/'}/>
+                    <MediaCard name={'Ahmad Faraaz'} img={faraz} description={'Co-founder'} linkedin={'https://www.linkedin.com/in/ahmad-faraaz/'}/>
                 </Grid><Grid item>
-                <MediaCard name={'Shasakt Tripathi'} img={sasakt} description={'Co-founder'} linkedin={'https://www.linkedin.com/in/sashakt-tripathi/'}/>
+                <MediaCard name={'Sashakt Tripathi'} img={sasakt} description={'Co-founder'} linkedin={'https://www.linkedin.com/in/sashakt-tripathi/'}/>
             </Grid>
 
 
